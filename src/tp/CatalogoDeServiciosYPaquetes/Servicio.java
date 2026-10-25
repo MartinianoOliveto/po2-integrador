@@ -1,5 +1,5 @@
 package tp.CatalogoDeServiciosYPaquetes;
 
-public class Servicio {
+public class Servicio implements IItemCatalogo{
 
 }
