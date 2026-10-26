@@ -1,7 +1,7 @@
 package tp.MetodosDePago;
 
 public interface TarjetaInternacionalAPI {
-    public void validarDatos();
+    public void validarDatos(TarjetaInternacional t);
     public void reservarFondos();
     public void ejecutarTransaccion(); 
 }
