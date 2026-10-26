@@ -3,7 +3,7 @@ package tp.CatalogoDeServiciosYPaquetes;
 public interface IItemCatalogo {
  public String getNombre(); 
  public String getDescripcion(); 
- public double precioFinal(); 
- public double precioBase(); 
+ public double getPrecioFinal(); 
+ public double getPrecioBase(); 
 
 }
