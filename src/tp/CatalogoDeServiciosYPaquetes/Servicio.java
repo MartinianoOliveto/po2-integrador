@@ -1,5 +1,8 @@
 package tp.CatalogoDeServiciosYPaquetes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Servicio implements IItemCatalogo{
  private String nombre;
  private int id; 
@@ -8,6 +11,7 @@ public class Servicio implements IItemCatalogo{
  private String categoria;
  private double precioBase;
  private double descuentoPromocional; 
+ private List<AtributoDinamico> atributosDinamicos = new ArrayList<>();
 // LEAF
  public Servicio (String nombre, int id, String descripcion, String operador, String categoria, double precioBase, double descuentoPromocional) {
   this.nombre = nombre; 
