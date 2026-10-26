@@ -1,5 +1,6 @@
 package tp.NotificacionesReserva;
 
 public class Reserva extends Sujeto{
-    
+    /*Ahora dependeria del estado, supongo, si es CONFIRMADA: EN CURSO
+    o finalizada, debe mandar el mail */ 
 }
