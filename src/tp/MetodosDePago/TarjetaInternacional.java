@@ -1,36 +1,36 @@
 package tp.MetodosDePago;
 
-import java.time.LocalDate;
-
 public class TarjetaInternacional extends MetodoDePago implements TarjetaInternacionalAPI{
 
     private String numeroTarjeta; 
     private int CVV; 
-    private LocalDate vencimiento; 
-    //private Banco banco; ????
+    private String vencimiento; 
+    private Banco banco; 
 
     @Override
-    protected void notificarResultado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificarResultado'");
-    }
+    public void notificarResultado() {
+        banco.notificar();
+    }   
 
     @Override
     public void validarDatos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'validarDatos'");
+        banco.validarDatos(this);
     }
 
     @Override
     public void reservarFondos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reservarFondos'");
+        banco.preautorizar(); 
     }
 
     @Override
     public void ejecutarTransaccion() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ejecutarTransaccion'");
+        banco.ejecutarTransaccion(); 
     }
     
+    public TarjetaInternacional(String numTarjeta, int CVV, String vencimiento, Banco banco){
+        this.numeroTarjeta = numTarjeta; 
+        this.CVV = CVV; 
+        this.vencimiento = vencimiento; 
+        this.banco = banco; 
+    }
 }
