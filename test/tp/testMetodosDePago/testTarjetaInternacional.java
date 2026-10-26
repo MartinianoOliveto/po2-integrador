@@ -8,20 +8,20 @@ import tp.MetodosDePago.*;
 
 public class testTarjetaInternacional {
     private TarjetaInternacional t; 
-    private Banco bancoProvincia; 
+    private TarjetaInternacionalAPI api; 
 
     @BeforeEach
     public void setUp(){
-        bancoProvincia = mock(Banco.class);
-        t = new TarjetaInternacional("5547 3051 2647 8512", 416, "2020/07", bancoProvincia);
+        api = mock(TarjetaInternacionalAPI.class);
+        t = new TarjetaInternacional("5547 3051 2647 8512", 416, "2020/07", api);
     }
     @Test 
     public void procesarPagoTest(){
         t.procesarPago();
-        verify(bancoProvincia, atLeastOnce()).preautorizar(); 
-        verify(bancoProvincia,atLeastOnce()).validarDatos(t);
-        verify(bancoProvincia,atLeastOnce()).ejecutarTransaccion();
-        verify(bancoProvincia,atLeastOnce()).notificar();
+        verify(api, atLeastOnce()).reservarFondos(); 
+        verify(api,atLeastOnce()).validarDatos(t);
+        verify(api,atLeastOnce()).ejecutarTransaccion();
+        verify(api,atLeastOnce()).notificarResultado();
     }
     //agregar al uml los mensajes del banco
 }
