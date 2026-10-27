@@ -1,30 +1,26 @@
 package tp.MetodosDePago;
 
-public class BilleteraVirtual extends MetodoDePago implements BilleteraVirtualAPI{
-
+public class BilleteraVirtual extends MetodoDePago{
+    private float saldo;
+    private BilleteraVirtualAPI api;
     @Override
-    public void validarDatos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'validarDatos'");
+    protected void validarDatos() {
+        api.validarDatos();
     }
-
     @Override
-    public void reservarFondos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reservarFondos'");
+    protected void reservarFondos() {
+        api.reservarFondos();
     }
-
     @Override
-    public void ejecutarTransaccion() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ejecutarTransaccion'");
+    protected void ejecutarTransaccion() {
+        api.ejecutarTransaccion();
     }
-
     @Override
-    public void notificarResultado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificarResultado'");
-    }
+    protected void notificarResultado() {
+        api.notificarResultado();
+    } 
+
+
 
  
     
