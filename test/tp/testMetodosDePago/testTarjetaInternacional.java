@@ -23,5 +23,5 @@ public class testTarjetaInternacional {
         verify(api,atLeastOnce()).ejecutarTransaccion();
         verify(api,atLeastOnce()).notificarResultado();
     }
-    //agregar al uml los mensajes del banco
+    
 }

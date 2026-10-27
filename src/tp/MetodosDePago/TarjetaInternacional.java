@@ -6,7 +6,6 @@ public class TarjetaInternacional extends MetodoDePago{
     private int CVV; 
     private String vencimiento; 
     private TarjetaInternacionalAPI api;  
-    //herencia de interfaces??
 
     @Override
     public void notificarResultado() {
