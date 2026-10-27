@@ -1,29 +1,27 @@
 package tp.MetodosDePago;
 
-public class TransferenciaBancaria extends MetodoDePago implements TransferenciaBancariaAPI{
+public class TransferenciaBancaria extends MetodoDePago{
     private String cbu; 
     private String alias; 
     private float saldo;
+    private TransferenciaBancariaAPI api;
     @Override
-    public void validarDatos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'validarDatos'");
-    }
-    @Override
-    public void ejecutarTransaccion() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ejecutarTransaccion'");
+    protected void validarDatos() {
+        api.validarDatos();
     }
     @Override
     protected void reservarFondos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reservarFondos'");
+        
     }
     @Override
+    protected void ejecutarTransaccion() {
+        api.ejecutarTransaccion();
+    }
+    @Override 
     protected void notificarResultado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificarResultado'");
+        api.notificarResultado();
     } 
+
 
     
 
