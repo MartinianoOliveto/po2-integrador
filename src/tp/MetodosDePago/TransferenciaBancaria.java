@@ -21,8 +21,10 @@ public class TransferenciaBancaria extends MetodoDePago{
     protected void notificarResultado() {
         api.notificarResultado();
     } 
-
-
-    
-
+    public TransferenciaBancaria(String cbu, String alias, float saldo, TransferenciaBancariaAPI api){
+        this.cbu = cbu; 
+        this.alias = alias;
+        this.saldo = saldo; 
+        this.api = api; 
+    }
 }

@@ -20,9 +20,8 @@ public class BilleteraVirtual extends MetodoDePago{
         api.notificarResultado();
     } 
 
-
-
- 
-    
-
+    public BilleteraVirtual(float saldo, BilleteraVirtualAPI api){
+        this.saldo = saldo; 
+        this.api = api; 
+    }
 }

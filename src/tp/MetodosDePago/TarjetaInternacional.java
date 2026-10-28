@@ -11,22 +11,18 @@ public class TarjetaInternacional extends MetodoDePago{
     public void notificarResultado() {
         api.notificarResultado();
     }   
-
     @Override
     public void validarDatos() {
         api.validarDatos(this);
     }
-
     @Override
     public void reservarFondos() {
         api.reservarFondos(); 
     }
-
     @Override
     public void ejecutarTransaccion() {
         api.ejecutarTransaccion(); 
     }
-    
     public TarjetaInternacional(String numTarjeta, int CVV, String vencimiento, TarjetaInternacionalAPI api){
         this.numeroTarjeta = numTarjeta; 
         this.CVV = CVV; 
