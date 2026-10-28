@@ -20,9 +20,9 @@ public class testTransferenciaBancaria {
     @Test 
     public void procesarPagoTest(){
         tb.procesarPago();
-        verify(api,atLeastOnce()).validarDatos();
-        verify(api,atLeastOnce()).ejecutarTransaccion();
-        verify(api,atLeastOnce()).notificarResultado(); 
+        verify(api,times(1)).validarDatos();
+        verify(api,times(1)).ejecutarTransaccion();
+        verify(api,times(1)).notificarResultado(); 
     }
 
 

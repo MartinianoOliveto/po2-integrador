@@ -18,10 +18,9 @@ public class testTarjetaInternacional {
     @Test 
     public void procesarPagoTest(){
         t.procesarPago();
-        verify(api,atLeastOnce()).validarDatos(t);
-        verify(api, atLeastOnce()).reservarFondos(); 
-        verify(api,atLeastOnce()).ejecutarTransaccion();
-        verify(api,atLeastOnce()).notificarResultado();
+        verify(api,times(1)).validarDatos(t);
+        verify(api, times(1)).reservarFondos(); 
+        verify(api,times(1)).ejecutarTransaccion();
+        verify(api,times(1)).notificarResultado();
     }
-    
 }
