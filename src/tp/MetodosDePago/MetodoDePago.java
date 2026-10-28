@@ -2,7 +2,7 @@ package tp.MetodosDePago;
 
 public abstract class MetodoDePago {
 
-    public void procesarPago(){
+    public final void procesarPago(){
         this.validarDatos();
         this.reservarFondos();
         this.ejecutarTransaccion();
