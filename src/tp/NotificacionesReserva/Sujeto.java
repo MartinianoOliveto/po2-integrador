@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sujeto {
-    private List<Observador> observadores = new ArrayList<Observador>(); 
+    protected List<Observador> observadores = new ArrayList<Observador>(); 
 
     public void agregar(Observador o){
         observadores.add(o);
