@@ -1,5 +1,5 @@
 package tp.NotificacionesReserva;
 
 public abstract class Subsistema {
-    public abstract void actualizar(Sujeto s); 
+    public abstract void actualizar(); 
 }
