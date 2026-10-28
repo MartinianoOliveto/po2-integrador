@@ -1,6 +1,6 @@
 package tp.CicloDeVidaDeLaReserva;
 
-public class EnChecking extends Estado{
+public class EnCheckin extends Estado{
     @Override
     public void procesarContexto(){
         
