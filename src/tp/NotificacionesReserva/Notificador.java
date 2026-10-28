@@ -1,7 +1,7 @@
 package tp.NotificacionesReserva;
 
 public class Notificador extends Subsistema{
-    private mailSender mailSender;
+    private MailSender mailSender;
 
     @Override
     public void actualizar() {
