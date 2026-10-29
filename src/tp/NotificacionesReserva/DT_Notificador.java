@@ -7,5 +7,8 @@ public class DT_Notificador extends DependencyTransformer {
         //Aca va la logica de si delega o no 
         target.actualizar(); 
     }
+    public DT_Notificador(Subsistema target){
+        super(target); 
+    }
 
 }

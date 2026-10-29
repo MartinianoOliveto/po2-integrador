@@ -8,4 +8,8 @@ public class DT_Fidelizacion extends DependencyTransformer{
         target.actualizar();
     }
 
+    public DT_Fidelizacion(Subsistema target) {
+        super(target);
+    }
+
 }
