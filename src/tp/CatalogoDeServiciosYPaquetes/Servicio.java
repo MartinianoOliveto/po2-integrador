@@ -44,4 +44,17 @@ public class Servicio implements IItemCatalogo{
  public double getPrecioFinal() {
   return this.getPrecioBase() * (1 - descuentoPromocional); 
  }
+
+ public void agregarAtributo(AtributoDinamico atributo) {
+    this.atributosDinamicos.add(atributo);
+}
+
+public void validar() {
+    if (this.nombre == null) {
+        throw new RuntimeException("Falta el valor del atributo obligatorio: nombre");
+    }
+        for (AtributoDinamico atributo : this.atributosDinamicos) {
+        atributo.validar();
+    }
+}
 }
