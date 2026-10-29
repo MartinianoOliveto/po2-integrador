@@ -54,4 +54,35 @@ public class Reserva {
         this.estado = estado;
     }
     
+    public double getTasasAdministrativas(){
+        return tasasAdministrativas;
+    }
+    
+    public double costoServicios(){
+        return cupos.stream()
+                    .mapToDouble(cupo -> cupo.costo())
+                    .sum()
+    }
+    
+    public double costoTotal(){
+        return costoServicios() + getTasasAdministrativas();
+    }
+    
+    public void agregarCupo(Servicio servicio, int cantidad){
+        // fijarse si ya estaba, agrego la cantidad
+        if (cupos.stream().map(cupo -> cupo.getServicio()).contains(servicio)){
+            cupo.sumarCantidad(cantidad);
+        }
+        else{
+            cupos.add(new CupoReserva(servicio, cantidad));
+        }
+    }
+    
+    public void quitarCupo(Servicio servicio){
+
+        boolean quitado = cupos.removeIf(cupo -> cupo.getServicio().equals(servicio));
+        if (!quitado) {
+            throw new ReservaException("El servicio " + servicio.getNombre() + " no está en la reserva");
+        }
+    }
 }
