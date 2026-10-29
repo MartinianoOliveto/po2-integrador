@@ -14,7 +14,7 @@ public abstract class Sujeto {
         observadores.remove(o);
     }
 
-    public List<Observador> getObservadores(Observador o){
+    public List<Observador> getObservadores(){
         return observadores; 
     }
     public void notificar(Sujeto s){
