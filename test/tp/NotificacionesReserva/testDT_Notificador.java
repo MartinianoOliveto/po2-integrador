@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 public class testDT_Notificador {
     private Reserva r; 
     private Notificador n; 
-    private DT_Notificador dtn;
+    private DTNotificador dtn;
 
     @BeforeEach
     public void setUp(){
         r = mock(Reserva.class); 
         n = mock(Notificador.class);
-        dtn = new DT_Notificador(n); 
+        dtn = new DTNotificador(n); 
     }
 
     @Test 

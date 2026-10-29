@@ -8,16 +8,16 @@ import org.junit.jupiter.api.Test;
 
 public class testReserva {
     private Reserva r;  
-    private DT_Notificador dtn; 
-    private DT_Generador_Voucher dtg;
-    private DT_Fidelizacion dtf; 
+    private DTFidelizacion dtn; 
+    private DTVoucher dtg;
+    private DTNotificador dtf; 
 
 
     @BeforeEach
     public void setUp(){
-        dtn = mock(DT_Notificador.class); 
-        dtg = mock(DT_Generador_Voucher.class);
-        dtf = mock(DT_Fidelizacion.class); 
+        dtn = mock(DTFidelizacion.class); 
+        dtg = mock(DTVoucher.class);
+        dtf = mock(DTNotificador.class); 
         r = new Reserva(); 
         r.agregar(dtn);
         r.agregar(dtg);
