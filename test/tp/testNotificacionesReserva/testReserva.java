@@ -1,10 +1,15 @@
-package tp.NotificacionesReserva;
+package tp.testNotificacionesReserva;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import tp.NotificacionesReserva.DTFidelizacion;
+import tp.NotificacionesReserva.DTNotificador;
+import tp.NotificacionesReserva.DTVoucher;
+import tp.NotificacionesReserva.Reserva;
 
 public class testReserva {
     private Reserva r;  
