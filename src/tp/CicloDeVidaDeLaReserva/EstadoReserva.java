@@ -8,13 +8,21 @@ public abstract class EstadoReserva {
     }
 
     public void confirmar(Reserva reserva) {
-        throw new EstadoReservaException("Error: No se puede confirmar la reserva en el estado " + this.getNombre());
+        throw new OperacionInvalidaException("Error: No se puede confirmar la reserva en " + this.getNombre());
     }
     public void cancelar(Reserva reserva) {
-        throw new EstadoReservaException("Error: No se puede cancelar la reserva en el estado " + this.getNombre());
+        throw new OperacionInvalidaException ("Error: No se puede cancelar la reserva en " + this.getNombre());
     }
     public void checkin(Reserva reserva) {
-        throw new EstadoReservaException("Error: No se puede hacer checkin de la reserva en el estado " + this.getNombre());
+        throw new OperacionInvalidaException("Error: No se puede hacer checkin en " + this.getNombre());
+    }
+    
+    public void iniciar(Reserva reserva){
+        throw new OperacionInvalidaException("Error: No se puede iniciar el viaje en " + this.getNombre());
+    }
+    
+    public void finalizar(Reserva reserva){
+        throw new OperacionInvalidaException("Error: No se puede finalizar el viaje en " + this.getNombre());
     }
     
     public String getNombre() {
