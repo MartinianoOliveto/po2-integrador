@@ -43,20 +43,35 @@ public class Reserva {
     }
     
     public void registrarDisfrutado(Servicio servicio){
-        
+        estado.registrarDisfrutado(this, servicio);
     }
 
     public void agregarServicio(Servicio servicio, int cantidad){
         estado.agregarServicio(this, servicio, cantidad);
     }
     
-    public void quitarServicio(Servicio servicio, int cantidad){
-        estado.quitarServicio(this, servicio, cantidad);
+    public void quitarServicio(Servicio servicio){
+        estado.quitarServicio(this, servicio);        
     }
     
     // Operaciones del contexto:
-    public void cambiarEstado(EstadoReserva estado){
-        this.estado = estado;
+    
+    public double getTasasAdministrativas(){
+        return tasasAdministrativas;
+    }
+    
+    public double costoServicios(){
+        return servicios.stream()
+                    .mapToDouble(servicio -> servicio.getCosto())
+                    .sum();
+    }
+    
+    public double costoTotal(){
+        return this.costoServicios() + this.getTasasAdministrativas();
+    }
+    
+    public void cambiarEstado(EstadoReserva nuevo){
+        this.estado = nuevo;
     }
     
 }
