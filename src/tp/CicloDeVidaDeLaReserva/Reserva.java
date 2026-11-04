@@ -133,5 +133,12 @@ public class Reserva {
             vouchers.add(new Voucher(monto, motivo));
         }
     }
+    
+    public double costoServiciosNoDisfrutados(){
+        return items.stream()
+                .filter(item -> !item.esDisfrutado())
+                .mapToDouble(item -> item.subtotal())
+                .sum();
+    }
 
 }
