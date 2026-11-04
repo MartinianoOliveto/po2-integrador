@@ -127,5 +127,11 @@ public class Reserva {
             item.getServicio().liberarCupo(item.getCantidad());
         }
     }
+    
+    public void emitirVoucher(double monto, String motivo){
+        if (monto > 0){
+            vouchers.add(new Voucher(monto, motivo));
+        }
+    }
 
 }
