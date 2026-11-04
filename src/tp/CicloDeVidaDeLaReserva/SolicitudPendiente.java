@@ -14,6 +14,10 @@ public class SolicitudPendiente extends EstadoReserva {
     
     @Override
     public void confirmar(Reserva reserva){
+        if(reserva.estaVacia()){
+            throw new ReservaException("No se puede confirmar una reserva sin servicios");
+        }
+        reserva.bloquearCupos();
         reserva.cambiarEstado(new Confirmada());
     }
     

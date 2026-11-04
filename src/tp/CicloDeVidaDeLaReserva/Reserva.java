@@ -75,7 +75,29 @@ public class Reserva {
     }
     
     public void agregarItem(Servicio servicio, int cantidad){
-        
+        // Si cantidad es 0 o negativa 
+        if (cantidad <= 0){
+            throw new ReservaException("La cantidad debe ser mayor a cero");
+        }
+        // Entiendo que seria un while y no un foreach a lo boca pero me salio mas rapido asi
+        for (ItemReserva item : reservas){
+            if (item.getServicio().equals(servicio)){
+                item.sumarCantidad(cantidad);
+                return;
+            }
+        }
+        reservas.add(new ItemReserva(servicio, cantidad));
+    }
+    
+    public void quitarItem(Servicio servicio){
+        // Si encuentro el item, lo quito completamente y sino error
+        for (ItemReserva item : reservas){
+            if (item.getServicio().equals(servicio)){
+                reservas.remove(item);
+                return;
+            }
+        }
+        throw new ReservaException("El servicio " + servicio.getNombre() + "no está en la reserva");
     }
 
 }
