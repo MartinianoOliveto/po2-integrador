@@ -1,5 +1,64 @@
 package tp.testCatalogoDeServiciosYPaquetes;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import tp.CatalogoDeServiciosYPaquetes.AtributoDinamico;
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
+
 public class testServicio {
+  private Servicio hotel;
+
+  @BeforeEach 
+
+  public void setUp() {
+    hotel = new Servicio("Hotel Central", 1, "Noche en el hotel central", "Trivago", "Alojamiento", 1000, 0);
+}
+  @Test
+  public void sinDescuentoElPrecioFinalEsIgualAlBase() {
+	  assertEquals(1000, hotel.getPrecioFinal(), 0.001);
+}
+
+  @Test
+  public void validarFallaSiFaltaElNombre() {
+	Servicio sinNombre = new Servicio(null, 1, "Sin nombre", "Trivago", "Alojamiento", 1000, 0);
+
+	RuntimeException error = assertThrows(RuntimeException.class, () -> sinNombre.validar());
+
+	assertEquals("Falta el valor del atributo obligatorio: nombre", error.getMessage());
+}  
+
+@Test
+public void validarNoFallaSiLaListaDeAtributosEstaVacia() {
+  assertDoesNotThrow(() -> hotel.validar());
+}
+
+@Test
+public void validarNoFallaSiLosAtributosSonValidos() {
+	AtributoDinamico capacidadMaxima = mock(AtributoDinamico.class);
+	AtributoDinamico politicaMascotas = mock(AtributoDinamico.class);
+	hotel.agregarAtributo(capacidadMaxima);
+	hotel.agregarAtributo(politicaMascotas);
+
+	assertDoesNotThrow(() -> hotel.validar());
+
+	verify(capacidadMaxima).validar();
+	verify(politicaMascotas).validar();
+}
+
+@Test 
+
+public void DevuelveNombre() {
+  assertEquals("Hotel Central", hotel.getNombre());
+}
+
+public void DevuelveDescripcion() {
+  assertEquals("Noche en el hotel central", hotel.getDescripcion());
+}
 
 }
