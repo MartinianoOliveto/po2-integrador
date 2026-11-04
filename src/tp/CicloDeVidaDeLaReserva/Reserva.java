@@ -62,7 +62,7 @@ public class Reserva {
     
     public double costoServicios(){
         return servicios.stream()
-                    .mapToDouble(servicio -> servicio.getCosto())
+                    .mapToDouble(servicio -> servicio.subtotal())
                     .sum();
     }
     
