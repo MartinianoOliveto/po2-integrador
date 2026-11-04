@@ -73,6 +73,10 @@ public class Reserva {
     public void cambiarEstado(EstadoReserva nuevo){
         this.estado = nuevo;
     }
+
+    public boolean estaVacia(){
+        return items.isEmpty();
+    }
     
     public void agregarItem(Servicio servicio, int cantidad){
         // Si cantidad es 0 o negativa 
@@ -98,6 +102,30 @@ public class Reserva {
             }
         }
         throw new ReservaException("El servicio " + servicio.getNombre() + "no está en la reserva");
+    }
+
+    // No es responsabilidad de reserva hacer seguimientos de cupos de los servicios. Lo delego a cada Servicio que creo que son la fuente de verdad
+    // de si tiene cupo o no, ademas es una responsabilidad chica de cada uno
+    public void bloquearCupos(){
+        List<ItemReserva> bloqueados = new ArrayList<ItemReserva>();
+        try { // Aplicando lo que enseño Butti
+            for (ItemReserva item : reservas){
+                item.getServicio().bloquearCupo(item.getCantidad());
+                bloqueados.add(item);
+            }
+        } catch (RuntimeException e) { // Hago roll-back para dejar el estado consistente a otras reservas (si las hay)
+            for (ItemReserva item : bloqueados){
+                item.getServicio().liberarCupo(item.getCantidad());
+            }
+            throw e; // Igual lanzo el error para notificar al cliente y que no pase desapercibido
+        }
+
+    }
+    
+    public void liberarCupos(){
+        for (ItemReserva item : reservas){
+            item.getServicio().liberarCupo(item.getCantidad());
+        }
     }
 
 }
