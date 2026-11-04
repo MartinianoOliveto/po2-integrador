@@ -12,7 +12,7 @@ import tp.CatalogoDeServiciosYPaquetes.Servicio;
 public class Reserva {
     private EstadoReserva estado;
     private final double tasasAdministrativas;
-    private final List<ServicioReserva> reservas = new ArrayList<ServicioReserva>();
+    private final List<ItemReserva> reservas = new ArrayList<ItemReserva>();
     private final List<Voucher> vouchers = new ArrayList<Voucher>();
     
 
@@ -61,7 +61,7 @@ public class Reserva {
     }
     
     public double costoServicios(){
-        return servicios.stream()
+        return reservas.stream()
                     .mapToDouble(servicio -> servicio.subtotal())
                     .sum();
     }
@@ -74,4 +74,8 @@ public class Reserva {
         this.estado = nuevo;
     }
     
+    public void agregarItem(Servicio servicio, int cantidad){
+        
+    }
+
 }

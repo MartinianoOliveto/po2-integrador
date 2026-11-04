@@ -7,7 +7,7 @@ public class ItemReserva {
     private int cantidad;
     private boolean disfrutado;
 
-    ItemReserva(Servicio servicio, int cantidad) {
+    public ItemReserva(Servicio servicio, int cantidad) {
         this.servicio = servicio;
         this.cantidad = cantidad;
     }
