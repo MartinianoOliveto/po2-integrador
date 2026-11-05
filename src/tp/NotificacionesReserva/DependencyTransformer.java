@@ -10,9 +10,6 @@ public abstract class DependencyTransformer implements Observador{
     /* Los distintos Dts van a implementar las que le interesan, puse 1 por estado
     desventaja: si se agrega un estado, se debe agregar aca
     Preguntar mañana si esta bien*/
-    public void solicitudPendiente(){
-
-    }
     public void confirmada(){
 
     }
