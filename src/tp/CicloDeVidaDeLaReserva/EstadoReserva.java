@@ -1,4 +1,5 @@
 package tp.CicloDeVidaDeLaReserva;
+import tp.NotificacionesReserva.*;
 
 public abstract class EstadoReserva {
     protected String nombre;
@@ -40,5 +41,8 @@ public abstract class EstadoReserva {
     
     public String getNombre() {
         return nombre;
+    }
+    public void notificar(Observador dt){
+
     }
 }

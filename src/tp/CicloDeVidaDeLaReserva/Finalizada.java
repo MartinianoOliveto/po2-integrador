@@ -1,5 +1,10 @@
 package tp.CicloDeVidaDeLaReserva;
 
-public class Finalizada extends EstadoReserva{
+import tp.NotificacionesReserva.DependencyTransformer;
 
+public class Finalizada extends EstadoReserva{
+    //comportamiento relacionado con el observer 
+    public void notificar(DependencyTransformer dt){
+        dt.finalizada();
+    }
 }

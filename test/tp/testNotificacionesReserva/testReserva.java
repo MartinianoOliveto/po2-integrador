@@ -2,14 +2,13 @@ package tp.testNotificacionesReserva;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import tp.CicloDeVidaDeLaReserva.*;
+import tp.NotificacionesReserva.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import tp.NotificacionesReserva.DTFidelizacion;
-import tp.NotificacionesReserva.DTNotificador;
-import tp.NotificacionesReserva.DTVoucher;
-import tp.NotificacionesReserva.Reserva;
+
 
 public class testReserva {
     private Reserva r;  
@@ -23,7 +22,7 @@ public class testReserva {
         dtn = mock(DTFidelizacion.class); 
         dtg = mock(DTVoucher.class);
         dtf = mock(DTNotificador.class); 
-        r = new Reserva(); 
+        r = new Reserva(10d); 
         r.agregar(dtn);
         r.agregar(dtg);
         r.agregar(dtf);
@@ -43,12 +42,14 @@ public class testReserva {
         assertTrue(r.getObservadores().size()==2);
     }
     @Test 
-    public void notificarTest(){
-        r.notificar(r);
+   //Todos reciben la notificacion
+    public void notificarCancelacion(){
+        r.cancelar(); 
         verify(dtn,times(1)).actualizar(r); 
         verify(dtg,times(1)).actualizar(r);
         verify(dtf,times(1)).actualizar(r);
     }
+    
 }
 
 

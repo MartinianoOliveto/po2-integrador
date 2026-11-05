@@ -7,23 +7,33 @@ import org.junit.jupiter.api.Test;
 
 import tp.NotificacionesReserva.DTNotificador;
 import tp.NotificacionesReserva.Notificador;
-import tp.NotificacionesReserva.Reserva;
+import tp.CicloDeVidaDeLaReserva.*;
 
 public class testDT_Notificador {
-    private Reserva r; 
+    //private Reserva r; 
     private Notificador n; 
     private DTNotificador dtn;
 
     @BeforeEach
     public void setUp(){
-        r = mock(Reserva.class); 
+        //r = mock(Reserva.class); 
         n = mock(Notificador.class);
         dtn = new DTNotificador(n); 
     }
 
     @Test 
-    public void actualizarTest(){
-        dtn.actualizar(r); 
+    public void confirmadaTest(){
+        dtn.confirmada();
+        verify(n,times(1)).actualizar(); 
+    }
+    @Test 
+    public void enCursoTest(){
+        dtn.enCurso();
+        verify(n,times(1)).actualizar(); 
+    }
+    @Test 
+    public void finalizadaTest(){
+        dtn.finalizada();
         verify(n,times(1)).actualizar(); 
     }
 }
