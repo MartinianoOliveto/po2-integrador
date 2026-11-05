@@ -41,14 +41,15 @@ public class testReserva {
         assertTrue(r.getObservadores().contains(dtn));
         assertTrue(r.getObservadores().size()==2);
     }
-   @Test 
+    @Test 
    //Todos reciben la notificacion
-    public void notificarTest(){
+    public void notificarCancelacion(){
         r.cancelar(); 
         verify(dtn,times(1)).actualizar(r); 
         verify(dtg,times(1)).actualizar(r);
         verify(dtf,times(1)).actualizar(r);
     }
+    
 }
 
 

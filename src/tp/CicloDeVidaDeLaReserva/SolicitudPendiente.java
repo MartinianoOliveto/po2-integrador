@@ -30,7 +30,7 @@ public class SolicitudPendiente extends EstadoReserva {
     
     @Override
     public void cancelar(Reserva reserva){
-        reserva.cambiarEstado(new Cancelada());
+        reserva.cambiarEstado(new Cancelada("Cancelada"));
     }
 
 
