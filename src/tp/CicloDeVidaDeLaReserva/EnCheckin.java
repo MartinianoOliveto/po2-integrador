@@ -1,5 +1,7 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.NotificacionesReserva.DependencyTransformer;
+
 public class EnCheckin extends EstadoReserva{
 
     @Override 
@@ -12,5 +14,9 @@ public class EnCheckin extends EstadoReserva{
         reserva.liberarCupos();
         reserva.emitirVoucher(reserva.costoTotal(), "Se cancela la reserva en checkin: servicios y tasas");
         reserva.cambiarEstado(new Cancelada());
+    }
+    //comportamiento relacionado con el observer 
+    public void notificar(DependencyTransformer dt){
+        dt.enCheckin();
     }
 }

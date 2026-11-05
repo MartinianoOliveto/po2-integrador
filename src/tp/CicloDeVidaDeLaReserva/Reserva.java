@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.*;
-
+import tp.NotificacionesReserva.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
 
-public class Reserva {
+public class Reserva extends Sujeto{
     private EstadoReserva estado;
     private final double tasasAdministrativas;
     private final List<ItemReserva> reservas = new ArrayList<ItemReserva>();
@@ -27,20 +27,30 @@ public class Reserva {
 
     // Operaciones de dominio:
     public void confirmar(){
+        this.notificar(this);
         estado.confirmar(this);
     }
 
     public void cancelar(){
+        this.notificar(this);
         estado.cancelar(this);
     }
 
     public void checkin(){
+        this.notificar(this);
         estado.checkin(this);
     }
     
     public void iniciar(){
+        this.notificar(this);
         estado.iniciar(this);
     }
+    public void delegarNotificacion(Observador dt){
+        estado.notificar(dt); 
+    }
+
+
+
     
     public void registrarDisfrutado(Servicio servicio){
         estado.registrarDisfrutado(this, servicio);
@@ -140,5 +150,7 @@ public class Reserva {
                 .mapToDouble(item -> item.subtotal())
                 .sum();
     }
+
+
 
 }
