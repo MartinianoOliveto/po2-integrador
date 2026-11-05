@@ -42,6 +42,18 @@ public class TestReserva {
 
     // Podria preguntar por cada estado si es el esperado. Pero no quiero usar instanceof, por lo que
     // tendre que usar enums para identificarlos, pero no estan implementados. Los dejo para despues
+    // TO DO: Probar casos borde exitosos: Que comience en pendiente y termine en finalizada
     @Test
+    public void testBloqueaElCupoDeCadaServicio() {
+        reserva.confirmar();
+
+        verify(hotel).bloquearCupo(2);
+        verify(excursion).bloquearCupo(1);
+    }
+
+    @Test
+    public void testSiUnServicioNoTieneCupoSeLiberaLoYaBloqueado() {
+        doThrow(new ReservaException("No hay cupo")).when(hotel).bloquearCupo(2);
+    }
 
 }
