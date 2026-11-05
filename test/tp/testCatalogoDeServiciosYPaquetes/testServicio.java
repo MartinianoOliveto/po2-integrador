@@ -57,6 +57,7 @@ public void DevuelveNombre() {
   assertEquals("Hotel Central", hotel.getNombre());
 }
 
+@Test
 public void DevuelveDescripcion() {
   assertEquals("Noche en el hotel central", hotel.getDescripcion());
 }
