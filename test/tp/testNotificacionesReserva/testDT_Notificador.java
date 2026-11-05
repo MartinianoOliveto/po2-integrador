@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import tp.NotificacionesReserva.DTNotificador;
 import tp.NotificacionesReserva.Notificador;
-import tp.NotificacionesReserva.Reserva;
+import tp.CicloDeVidaDeLaReserva.*;
 
 public class testDT_Notificador {
     private Reserva r; 

@@ -42,5 +42,7 @@ public abstract class EstadoReserva {
     public String getNombre() {
         return nombre;
     }
-    public abstract void notificar(Observador dt); 
+    public void notificar(Observador dt){
+
+    }
 }

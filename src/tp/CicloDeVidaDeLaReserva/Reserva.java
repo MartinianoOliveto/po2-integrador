@@ -18,7 +18,7 @@ public class Reserva extends Sujeto{
 
     public Reserva(double tasasAdministrativas) {
         this.tasasAdministrativas = tasasAdministrativas;
-        this.estado = new SolicitudPendiente();
+        this.estado = new SolicitudPendiente("Solicitud Pendiente");
     }
 
     // Pensar que el punto de entrada al contexto es el cliente. Toda

@@ -1,6 +1,13 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.NotificacionesReserva.DependencyTransformer;
+import tp.CatalogoDeServiciosYPaquetes.*;
+
 public class SolicitudPendiente extends EstadoReserva {
+
+    public SolicitudPendiente(String nombre) {
+        super(nombre);
+    }
 
     @Override
     public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
@@ -25,5 +32,6 @@ public class SolicitudPendiente extends EstadoReserva {
     public void cancelar(Reserva reserva){
         reserva.cambiarEstado(new Cancelada());
     }
+
 
 }
