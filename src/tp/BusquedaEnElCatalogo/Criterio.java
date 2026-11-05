@@ -6,5 +6,4 @@ public interface Criterio {
 
     public boolean cumple(IItemCatalogo item);
     
-    
 }
