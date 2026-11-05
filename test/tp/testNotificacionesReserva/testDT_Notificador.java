@@ -10,13 +10,13 @@ import tp.NotificacionesReserva.Notificador;
 import tp.CicloDeVidaDeLaReserva.*;
 
 public class testDT_Notificador {
-    private Reserva r; 
+    //private Reserva r; 
     private Notificador n; 
     private DTNotificador dtn;
 
     @BeforeEach
     public void setUp(){
-        r = mock(Reserva.class); 
+        //r = mock(Reserva.class); 
         n = mock(Notificador.class);
         dtn = new DTNotificador(n); 
     }

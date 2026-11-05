@@ -1,6 +1,6 @@
 package tp.NotificacionesReserva;
 
-public class Voucher extends Subsistema{ 
+public class GeneradorVoucher extends Subsistema{ 
 
     @Override
     public void actualizar() {
