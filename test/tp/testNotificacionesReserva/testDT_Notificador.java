@@ -22,8 +22,18 @@ public class testDT_Notificador {
     }
 
     @Test 
-    public void actualizarTest(){
-        dtn.actualizar(r); 
+    public void confirmadaTest(){
+        dtn.confirmada();
+        verify(n,times(1)).actualizar(); 
+    }
+    @Test 
+    public void enCursoTest(){
+        dtn.enCurso();
+        verify(n,times(1)).actualizar(); 
+    }
+    @Test 
+    public void finalizadaTest(){
+        dtn.finalizada();
         verify(n,times(1)).actualizar(); 
     }
 }
