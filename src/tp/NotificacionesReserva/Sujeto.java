@@ -20,5 +20,5 @@ public abstract class Sujeto {
     public void notificar(Sujeto s){
         observadores.forEach(o->o.actualizar(this));
     }
-
+    public abstract void delegarNotificacion(DependencyTransformer dt); 
 }
