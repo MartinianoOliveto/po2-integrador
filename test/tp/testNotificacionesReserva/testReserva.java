@@ -50,15 +50,34 @@ public class testReserva {
         r.remover(dtg); 
         assertDoesNotThrow(()->r.remover(dtg)); 
     }
-    @Test 
+   /*  @Test 
    //Todos reciben la notificacion
-    public void notificarCancelacion(){
+     public void notificarCancelacion(){
         r.cancelar(); 
         verify(dtn,times(1)).actualizar(r); 
         verify(dtg,times(1)).actualizar(r);
         verify(dtf,times(1)).actualizar(r);
+    }*/
+    //Voy a testear que se notifiquen las transiciones validas 
+    @Test 
+    public void transicionValidaSolicitudPendienteACanceladaTest(){
+        r.cancelar();
+        verify(dtn,times(1)).actualizar(r); 
+        verify(dtg,times(1)).actualizar(r);
+        verify(dtf,times(1)).actualizar(r);
     }
-    
+    @Test 
+    public void transicionInvalidaSolicitudPendienteACheckin(){
+        assertThrows(ReservaException.class,()->r.checkin());
+        verify(dtn,never()).actualizar(r);
+        verify(dtg,never()).actualizar(r);
+        verify(dtf,never()).actualizar(r);
+    }
+    @Test 
+    public void transicionValidaConfirmadaACancelada(){
+        r.confirmar();
+        r.
+    }
 }
 
 

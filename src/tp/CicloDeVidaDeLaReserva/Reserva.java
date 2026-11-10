@@ -27,27 +27,31 @@ public class Reserva extends Sujeto{
 
     // Operaciones de dominio:
     public void confirmar(){
-        this.notificar(this);
         estado.confirmar(this);
+        this.notificar(this);
+        
     }
 
     public void cancelar(){
-        this.notificar(this);
         estado.cancelar(this);
+        this.notificar(this);
+        
     }
 
     public void checkin(){
-        this.notificar(this);
         estado.checkin(this);
+        this.notificar(this);
+        
     }
     
     public void iniciar(){
-        this.notificar(this);
         estado.iniciar(this);
+        this.notificar(this);
     }
     public void delegarNotificacion(Observador dt){
         estado.notificar(dt); 
     }
+
 
 
 
