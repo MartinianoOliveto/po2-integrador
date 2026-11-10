@@ -45,4 +45,9 @@ public class testDTFidelizacion {
         dtf.finalizada(r);
         verify(f,never()).actualizar(r); 
     }
+    @Test 
+    public void DTDelegaEnLaReservaCuandoRecibeNotificacion(){
+        dtf.actualizar(r); 
+        verify(r,times(1)).delegarNotificacion(dtf); 
+    }
 }

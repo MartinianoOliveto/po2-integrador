@@ -48,4 +48,9 @@ public class testDTNotificador {
         dtn.enCheckin(r);
         verify(n,never()).actualizar(r); 
     }
+    @Test 
+    public void DTDelegaEnLaReservaCuandoRecibeNotificacion(){
+        dtn.actualizar(r); 
+        verify(r,times(1)).delegarNotificacion(dtn); 
+    }
 }

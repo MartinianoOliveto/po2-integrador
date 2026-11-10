@@ -44,5 +44,10 @@ public class testDTVoucher {
         dtv.confirmada(r);
         verify(v,never()).actualizar(r); 
     }
+    @Test 
+    public void DTDelegaEnLaReservaCuandoRecibeNotificacion(){
+        dtv.actualizar(r); 
+        verify(r,times(1)).delegarNotificacion(dtv); 
+    }
     
 }
