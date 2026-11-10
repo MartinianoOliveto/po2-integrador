@@ -7,4 +7,7 @@ public class GeneradorVoucher extends Subsistema{
     public void actualizar(Reserva r) {
         generadorVoucher.generarVoucher(r); 
     }
+    public GeneradorVoucher(GeneradorVoucherAPI api){
+        generadorVoucher = api; 
+    }
 }

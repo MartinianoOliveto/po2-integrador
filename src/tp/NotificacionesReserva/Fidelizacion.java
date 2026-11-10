@@ -7,5 +7,8 @@ public class Fidelizacion extends Subsistema{
     public void actualizar(Reserva r) {
         generadorCupon.generarCupon(r); 
     }
+    public Fidelizacion(GeneradorCuponAPI api){
+        generadorCupon = api; 
+    }
 
 }
