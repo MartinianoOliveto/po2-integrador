@@ -48,8 +48,8 @@ public class Reserva extends Sujeto{
         estado.iniciar(this);
         this.notificar(this);
     }
-    public void delegarNotificacion(Observador dt){
-        estado.notificar(dt); 
+    public void delegarNotificacion(DependencyTransformer dt){
+        estado.notificar(dt,this); 
     }
 
 

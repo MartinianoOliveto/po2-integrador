@@ -17,7 +17,8 @@ public class Confirmada extends EstadoReserva {
         reserva.cambiarEstado(new Cancelada());
     }
     //comportamiento relacionado con el observer 
-    public void notificar(DependencyTransformer dt){
-        dt.confirmada();
+    @Override 
+    public void notificar(DependencyTransformer dt, Reserva r){
+        dt.confirmada(r);
     }
 }

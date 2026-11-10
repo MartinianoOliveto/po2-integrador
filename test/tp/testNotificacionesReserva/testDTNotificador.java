@@ -13,37 +13,39 @@ public class testDTNotificador {
     //private Reserva r; 
     private Notificador n; 
     private DTNotificador dtn;
+    private Reserva r;
 
     @BeforeEach
     public void setUp(){
         //r = mock(Reserva.class); 
         n = mock(Notificador.class);
         dtn = new DTNotificador(n); 
+        r=mock(Reserva.class); 
     }
 
     @Test 
     public void confirmadaActualizaTest(){
-        dtn.confirmada();
-        verify(n,times(1)).actualizar(); 
+        dtn.confirmada(r);
+        verify(n,times(1)).actualizar(r); 
     }
     @Test 
     public void enCursoActualizaTest(){
-        dtn.enCurso();
-        verify(n,times(1)).actualizar(); 
+        dtn.enCurso(r);
+        verify(n,times(1)).actualizar(r); 
     }
     @Test 
     public void finalizadaActualizaTest(){
-        dtn.finalizada();
-        verify(n,times(1)).actualizar(); 
+        dtn.finalizada(r);
+        verify(n,times(1)).actualizar(r); 
     }
     @Test 
     public void canceladaTest(){
-        dtn.cancelada(); 
-        verify(n,never()).actualizar(); 
+        dtn.cancelada(r); 
+        verify(n,never()).actualizar(r); 
     }
     @Test 
     public void enCheckinNoHaceNadaTest(){
-        dtn.enCheckin();
-        verify(n,never()).actualizar(); 
+        dtn.enCheckin(r);
+        verify(n,never()).actualizar(r); 
     }
 }

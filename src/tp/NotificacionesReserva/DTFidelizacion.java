@@ -1,4 +1,5 @@
 package tp.NotificacionesReserva;
+import tp.CicloDeVidaDeLaReserva.*;
 
 public class DTFidelizacion extends DependencyTransformer {
 
@@ -6,8 +7,8 @@ public class DTFidelizacion extends DependencyTransformer {
         super(target); 
     }
     @Override 
-    public void cancelada(){
-        target.actualizar(); 
+    public void cancelada(Reserva r){
+        target.actualizar(r); 
     }
 
 }

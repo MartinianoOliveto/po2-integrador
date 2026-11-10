@@ -1,4 +1,5 @@
 package tp.NotificacionesReserva;
+import tp.CicloDeVidaDeLaReserva.*;
 
 public abstract class DependencyTransformer implements Observador{
     protected Subsistema target;
@@ -10,19 +11,19 @@ public abstract class DependencyTransformer implements Observador{
     /* Los distintos Dts van a implementar las que le interesan, puse 1 por estado
     desventaja: si se agrega un estado, se debe agregar aca
     Preguntar mañana si esta bien*/
-    public void confirmada(){
+    public void confirmada(Reserva r){
 
     }
-    public void enCheckin(){
+    public void enCheckin(Reserva r){
 
     }
-    public void enCurso(){
+    public void enCurso(Reserva r){
 
     }
-    public void finalizada(){
+    public void finalizada(Reserva r){
 
     }
-    public void cancelada(){
+    public void cancelada(Reserva r){
 
     }
 

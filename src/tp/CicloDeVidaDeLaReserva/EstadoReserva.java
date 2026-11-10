@@ -42,7 +42,7 @@ public abstract class EstadoReserva {
     public String getNombre() {
         return nombre;
     }
-    public void notificar(Observador dt){
+    public void notificar(DependencyTransformer dt,Reserva r){
 
     }
 }

@@ -21,7 +21,8 @@ public class EnCurso extends EstadoReserva{
         reserva.cambiarEstado(new Cancelada());
     }
     //comportamiento relacionado con el observer 
-    public void notificar(DependencyTransformer dt){
-        dt.enCurso();
+    @Override 
+    public void notificar(DependencyTransformer dt,Reserva r){
+        dt.enCurso(r);
     }
 }
