@@ -16,7 +16,8 @@ public class EnCheckin extends EstadoReserva{
         reserva.cambiarEstado(new Cancelada());
     }
     //comportamiento relacionado con el observer 
-    public void notificar(DependencyTransformer dt){
-        dt.enCheckin();
+    @Override 
+    public void notificar(DependencyTransformer dt, Reserva r){
+        dt.enCheckin(r);
     }
 }
