@@ -33,6 +33,10 @@ public class testReserva {
         assertTrue(r.getObservadores().contains(dtf));
         assertTrue(r.getObservadores().contains(dtn));
     }
+    @Test
+    public void agregarObservadorRepetidoFallaTest(){
+        assertThrows(SujetoException.class, () -> r.agregar(dtn));
+    }
     @Test 
     public void eliminandoObservadoresTest(){
         r.remover(dtg);
@@ -40,6 +44,11 @@ public class testReserva {
         assertTrue(r.getObservadores().contains(dtf));
         assertTrue(r.getObservadores().contains(dtn));
         assertTrue(r.getObservadores().size()==2);
+    }
+    @Test 
+    public void eliminarObservadorQueNoEstaSuscritoNoRompe(){
+        r.remover(dtg); 
+        assertDoesNotThrow(()->r.remover(dtg)); 
     }
     @Test 
    //Todos reciben la notificacion
