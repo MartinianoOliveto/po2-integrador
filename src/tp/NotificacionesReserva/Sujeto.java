@@ -26,8 +26,8 @@ public abstract class Sujeto {
     public void notificar(Sujeto s){
         observadores.forEach(o->o.actualizar(this));
     }
-    public abstract void delegarNotificacion(Observador o); 
-    
+    public abstract void delegarNotificacion(DependencyTransformer dt);
+
     private void validarExistencia(Observador o){
         if(observadores.contains(o)){
             throw new SujetoException("El observador ya está registrado");
