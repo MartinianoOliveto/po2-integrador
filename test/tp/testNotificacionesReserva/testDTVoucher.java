@@ -21,4 +21,25 @@ public class testDTVoucher {
         dtv.finalizada();
         verify(v,times(1)).actualizar(); 
     }
+    @Test
+    public void confirmadaNoHaceNadaTest(){
+        dtv.confirmada();
+        verify(v,never()).actualizar(); 
+    }
+    @Test
+    public void enCheckinNoHaceNadaTest(){
+        dtv.enCheckin();
+        verify(v,never()).actualizar(); 
+    }
+    @Test
+    public void enCursoNoHaceNadaTest(){
+        dtv.enCurso();
+        verify(v,never()).actualizar(); 
+    }
+    @Test
+    public void canceladaNoHaceNadaTest(){
+        dtv.confirmada();
+        verify(v,never()).actualizar(); 
+    }
+    
 }

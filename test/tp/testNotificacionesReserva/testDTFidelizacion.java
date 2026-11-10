@@ -18,8 +18,28 @@ public class testDTFidelizacion {
     }
     
     @Test 
-    public void canceladaTest(){
+    public void canceladaActualizaTest(){
         dtf.cancelada();
         verify(f,times(1)).actualizar(); 
+    }
+    @Test
+    public void confirmadaNoHaceNadaTest(){
+        dtf.confirmada();
+        verify(f,never()).actualizar(); 
+    }
+    @Test
+    public void enCheckinNoHaceNadaTest(){
+        dtf.enCheckin();
+        verify(f,never()).actualizar(); 
+    }
+    @Test
+    public void enCursoNoHaceNadaTest(){
+        dtf.enCurso();
+        verify(f,never()).actualizar(); 
+    }
+    @Test
+    public void finzalizadaNoHaceNadaTest(){
+        dtf.cancelada();
+        verify(f,never()).actualizar(); 
     }
 }

@@ -9,7 +9,7 @@ import tp.NotificacionesReserva.DTNotificador;
 import tp.NotificacionesReserva.Notificador;
 import tp.CicloDeVidaDeLaReserva.*;
 
-public class testDT_Notificador {
+public class testDTNotificador {
     //private Reserva r; 
     private Notificador n; 
     private DTNotificador dtn;
@@ -22,18 +22,28 @@ public class testDT_Notificador {
     }
 
     @Test 
-    public void confirmadaTest(){
+    public void confirmadaActualizaTest(){
         dtn.confirmada();
         verify(n,times(1)).actualizar(); 
     }
     @Test 
-    public void enCursoTest(){
+    public void enCursoActualizaTest(){
         dtn.enCurso();
         verify(n,times(1)).actualizar(); 
     }
     @Test 
-    public void finalizadaTest(){
+    public void finalizadaActualizaTest(){
         dtn.finalizada();
         verify(n,times(1)).actualizar(); 
+    }
+    @Test 
+    public void canceladaTest(){
+        dtn.cancelada(); 
+        verify(n,never()).actualizar(); 
+    }
+    @Test 
+    public void enCheckinNoHaceNadaTest(){
+        dtn.enCheckin();
+        verify(n,never()).actualizar(); 
     }
 }
