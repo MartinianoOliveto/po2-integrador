@@ -26,6 +26,9 @@ public abstract class Sujeto {
     public void notificar(Sujeto s){
         observadores.forEach(o->o.actualizar(this));
     }
+    //Aca el problema es que no pude desacoplar, como los DTs reciben en primera instancia a un sujeto, y despues el estado habla
+    //con los concretos, debo pasarle al dt como parametro, pero ensucio la interfaz de Sujeto
+    //no puedo mandarsela directo a la reserva este mensaje, por que cuando mandan este mensaje, no conocen una Reserva si no un Sujeto
     public abstract void delegarNotificacion(DependencyTransformer dt);
 
     private void validarExistencia(Observador o){
