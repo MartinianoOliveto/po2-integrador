@@ -1,23 +1,20 @@
 package tp.Reportes;
 
 public class VisitanteCSV implements Visitante{
-
+    private ExportadorCSVAPI api; 
     @Override
     public void visitar(ReporteServicios r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a CSV (como lo modelo??) podria usar una posible api, pasandole la funcion como parametro
+        api.exportarReporteServicios(r.serviciosMasReservados()); 
     }
 
     @Override
     public void visitar(ReporteOcupacion r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a CSV (como lo modelo??)
+        api.exportarReporteOcupacion(r.serviciosPorCupo()); 
     }
 
     @Override
     public void visitar(ReporteProveedor r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a CSV (como lo modelo??)
+        api.exportarReporteProveedor(r.exposicionPorProveedor());
     }
 
 }

@@ -5,19 +5,17 @@ public class VisitanteHTML implements Visitante{
 
     @Override
     public void visitar(ReporteServicios r) {
-
+        api.exportarReporteServicios(r.serviciosMasReservados()); 
     }
 
     @Override
     public void visitar(ReporteOcupacion r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a HTML (como lo modelo??)
+        api.exportarReporteOcupacion(r.serviciosPorCupo()); 
     }
 
     @Override
     public void visitar(ReporteProveedor r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a HTML (como lo modelo??)
+        api.exportarReporteProveedor(r.exposicionPorProveedor());
     }
     
 }
