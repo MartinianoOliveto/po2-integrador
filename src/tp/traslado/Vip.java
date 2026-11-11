@@ -2,16 +2,15 @@ package tp.traslado;
 
 public class Vip implements ICalculable {
 
-    private float valorReserva;
+
     private TrasladoVIP trasladoVip; 
 
-    public Vip(float valorReserva, TrasladoVIP trasladoVip) {
-     this.valorReserva = valorReserva;
+    public Vip(TrasladoVIP trasladoVip) {
      this.trasladoVip = trasladoVip;
     }
 
     @Override
-    public float calcularCosto() {
+    public float calcularCosto(float valorReserva, int cantPasajeros, Direccion direccion) {
      return trasladoVip.calcularCosto(valorReserva); 
     }
 }
