@@ -1,4 +1,5 @@
 package tp.Reportes;
+import tp.CatalogoDeServiciosYPaquetes.*;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class ReporteOcupacion extends Reporte{
     }
     //Aca hay que ver si estos metodos los puedo pasar a la superclase Reporte, y hacer un template 
     //Si hay distintos tipo
-    public List<ItemCatalogo> serviciosPorCupo(){
-        catalogo.serviciosPorCupo(); 
+    public List<IItemCatalogo> serviciosPorCupo(){
+        return catalogo.serviciosPorCupo(); 
     }
 }

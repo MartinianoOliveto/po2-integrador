@@ -10,6 +10,6 @@ public class ReporteProveedor extends Reporte{
     }
 
     public HashMap<String, Float> exposicionPorProveedor(){
-        catalogo.exposicionPorProveedor(); 
+        return catalogo.exposicionPorProveedor(); 
     }
 }
