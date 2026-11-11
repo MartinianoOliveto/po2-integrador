@@ -10,7 +10,7 @@ public class ReporteServicios extends Reporte{
     public void aceptar(Visitante v) {
         v.visitar(this); 
     }
-    public HashMap<IItemCatalogo, Integer> serviciosMasreservados(){
+    public HashMap<IItemCatalogo, Integer> serviciosMasReservados(){
         return catalogo.serviciosMasReservados(); 
     }
 }

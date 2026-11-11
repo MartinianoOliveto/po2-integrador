@@ -1,11 +1,11 @@
 package tp.Reportes;
 
 public class VisitanteHTML implements Visitante{
+    private ExportadorHTMLAPI api;
 
     @Override
     public void visitar(ReporteServicios r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a HTML (como lo modelo??)
+
     }
 
     @Override
