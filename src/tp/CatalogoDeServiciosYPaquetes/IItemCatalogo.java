@@ -9,4 +9,6 @@ public interface IItemCatalogo {
  public double getPrecioBase(); 
  public void bloquearCupo(Periodo periodo);
  public void liberarCupo(Periodo periodo);
+ public boolean perteneceACategoria(Categoria categoria);
+ public boolean tieneDisponibilidad();
 }

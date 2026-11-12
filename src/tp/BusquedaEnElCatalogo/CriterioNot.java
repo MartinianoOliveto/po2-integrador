@@ -1,5 +1,7 @@
 package tp.BusquedaEnElCatalogo;
 
+import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
+
 public class CriterioNot implements Criterio{
     private final Criterio criterio;
     
