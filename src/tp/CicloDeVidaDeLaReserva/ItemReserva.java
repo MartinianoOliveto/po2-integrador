@@ -13,14 +13,6 @@ public class ItemReserva {
         this.periodo = periodo;
     }
 
-    public Servicio getServicio(){
-        return servicio;
-    }
-
-    public Periodo getPeriodo() {
-        return periodo;
-    }
-
     public boolean esDisfrutado() {
         return disfrutado;
     }

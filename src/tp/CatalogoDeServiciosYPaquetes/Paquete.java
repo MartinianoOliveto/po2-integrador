@@ -3,11 +3,13 @@ package tp.CatalogoDeServiciosYPaquetes;
 import java.util.ArrayList;
 import java.util.List;
 
+import tp.CicloDeVidaDeLaReserva.Periodo;
+
 public class Paquete implements IItemCatalogo{
   private String nombre;
   private String descripcion;
   private double descuentoPromocional;
-  private List <IItemCatalogo> componentes = new ArrayList(); 
+  private List <IItemCatalogo> componentes = new ArrayList<>(); 
   // COMPOSITE 
   public Paquete(String nombre, String descripcion, double descuentoPromocional){
     this.nombre = nombre;
@@ -47,6 +49,29 @@ public class Paquete implements IItemCatalogo{
   public void quitarComponente(IItemCatalogo componente) {
   componentes.remove(componente);
 }
+
+ @Override
+  public void bloquearCupo(Periodo periodo) {
+  List<IItemCatalogo> bloqueados = new ArrayList<>();
+  try {
+    for (IItemCatalogo componente : componentes) {
+      componente.bloquearCupo(periodo);
+      bloqueados.add(componente);
+    }
+  } catch (RuntimeException e) {
+    for (IItemCatalogo componente : bloqueados) {
+      componente.liberarCupo(periodo);
+    }
+    throw e;
+  }
+ }
+
+ @Override
+  public void liberarCupo(Periodo periodo) {
+  for (IItemCatalogo componente : componentes) {
+    componente.liberarCupo(periodo);
+  }
+ }
 
 
 }

@@ -8,8 +8,8 @@ public class EnCurso extends EstadoReserva{
     }
 
     @Override 
-    public void registrarDisfrutado(Reserva reserva, Servicio servicio){
-        reserva.marcarDisfrutado(servicio);
+    public void registrarDisfrutado(Reserva reserva, Servicio servicio, Periodo periodo){
+        reserva.marcarDisfrutado(servicio, periodo);
     }
     
     @Override

@@ -1,6 +1,7 @@
 package tp.CicloDeVidaDeLaReserva;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.*;
@@ -37,6 +38,10 @@ public class Reserva {
     public void iniciar(){
         estado.iniciar(this);
     }
+
+    public void finalizar(){
+        estado.finalizar(this);
+    }
     
     // Modelo colaboradores como sugirio el profe para el tema de fechas y cupos
     public void registrarDisfrutado(Servicio servicio, Periodo periodo){
@@ -72,6 +77,42 @@ public class Reserva {
         if (monto > 0){
             vouchers.add(new Voucher(monto, motivo));
         }
+    }
+
+    public List<Voucher> getVouchers(){
+        return Collections.unmodifiableList(vouchers);
+    }
+
+    public EstadoReserva getEstado(){
+        return estado;
+    }
+
+    public void agregarItem(Servicio servicio, Periodo periodo){
+        servicios.agregar(servicio, periodo);
+    }
+
+    public void quitarItem(Servicio servicio, Periodo periodo){
+        servicios.quitar(servicio, periodo);
+    }
+
+    public void marcarDisfrutado(Servicio servicio, Periodo periodo){
+        servicios.marcarDisfrutado(servicio, periodo);
+    }
+
+    public boolean estaVacia(){
+        return servicios.estaVacio();
+    }
+
+    public void bloquearCupos(){
+        servicios.bloquearCupos();
+    }
+
+    public void liberarCupos(){
+        servicios.liberarCupos();
+    }
+
+    public double costoServiciosNoDisfrutados(){
+        return servicios.costoNoDisfrutados();
     }
     
 }

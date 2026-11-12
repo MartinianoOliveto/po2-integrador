@@ -9,13 +9,13 @@ public class SolicitudPendiente extends EstadoReserva {
     }
 
     @Override
-    public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
-        reserva.agregarItem(servicio, cantidad);
+    public void agregarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
+        reserva.agregarItem(servicio, periodo);
     }
     
     @Override 
-    public void quitarServicio(Reserva reserva, Servicio servicio){
-        reserva.quitarItem(servicio);
+    public void quitarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
+        reserva.quitarItem(servicio, periodo);
     }
     
     @Override

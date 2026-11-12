@@ -23,7 +23,10 @@ public class CalendarioDeCupos {
     }
 
     public int ocupados(LocalDate dia) {
-        return (int) bloqueados.stream().filter(periodo -> periodo.incluye(dia)).count();
+        return bloqueados.stream()
+        .filter(periodo -> periodo.incluye(dia))
+        .mapToInt(periodo -> 1)
+        .sum();
     }
 
     public int disponibles(LocalDate dia) {
@@ -34,13 +37,9 @@ public class CalendarioDeCupos {
         return periodo.dias().stream().allMatch(dia -> disponibles(dia) > 0);
     }
 
-    public boolean tieneCupoEnAlgunaFecha() {
-        return capacidad > 0;
-    }
-
     public void bloquear(Periodo periodo) {
         if (!hayCupo(periodo)) {
-            throw new RuntimeException("No hay cupo disponible")
+            throw new RuntimeException("No hay cupo disponible");
         }
         bloqueados.add(periodo);
     }

@@ -8,6 +8,8 @@ public class Voucher {
         this.monto = monto;
         this.motivo = motivo;
     }
-    
-    
+
+    public double getMonto(){
+        return monto;
+    }
 }

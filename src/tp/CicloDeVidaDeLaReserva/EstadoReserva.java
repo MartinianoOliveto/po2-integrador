@@ -14,7 +14,7 @@ public abstract class EstadoReserva {
     }
 
     public void quitarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
-        throw new ReservaException("Error: No se puede agregar servicios en " + this.getNombre());
+        throw new ReservaException("Error: No se puede quitar servicios en " + this.getNombre());
     }
 
     public void confirmar(Reserva reserva) {
