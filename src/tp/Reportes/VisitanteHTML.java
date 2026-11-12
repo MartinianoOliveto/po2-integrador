@@ -17,5 +17,7 @@ public class VisitanteHTML implements Visitante{
     public void visitar(ReporteProveedor r) {
         api.exportarReporteProveedor(r.exposicionPorProveedor());
     }
-    
+    public VisitanteHTML(ExportadorHTMLAPI api){
+        this.api = api; 
+    }
 }
