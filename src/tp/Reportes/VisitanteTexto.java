@@ -16,4 +16,8 @@ public class VisitanteTexto implements Visitante{
     public void visitar(ReporteProveedor r) {
         api.exportarReporteProveedor(r.exposicionPorProveedor());
     }
+
+    public VisitanteTexto(ExportadorTextoAPI api){
+        this.api= api; 
+    }
 }
