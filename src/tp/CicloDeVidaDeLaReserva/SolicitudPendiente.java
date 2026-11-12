@@ -1,5 +1,6 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
 import tp.NotificacionesReserva.DependencyTransformer;
 import tp.CatalogoDeServiciosYPaquetes.*;
 
@@ -10,13 +11,13 @@ public class SolicitudPendiente extends EstadoReserva {
     }
 
     @Override
-    public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
-        reserva.agregarItem(servicio, cantidad);
+    public void agregarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
+        reserva.agregarItem(servicio, periodo);
     }
     
     @Override 
-    public void quitarServicio(Reserva reserva, Servicio servicio){
-        reserva.quitarItem(servicio);
+    public void quitarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
+        reserva.quitarItem(servicio, periodo);
     }
     
     @Override
@@ -25,7 +26,7 @@ public class SolicitudPendiente extends EstadoReserva {
             throw new ReservaException("No se puede confirmar una reserva sin servicios");
         }
         reserva.bloquearCupos();
-        reserva.cambiarEstado(new Confirmada());
+        reserva.cambiarEstado(new Confirmada("Confirmada"));
     }
     
     @Override

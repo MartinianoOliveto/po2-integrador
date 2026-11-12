@@ -1,9 +1,12 @@
 package tp.CatalogoDeServiciosYPaquetes;
 
+import tp.CicloDeVidaDeLaReserva.Periodo;
+
 public interface IItemCatalogo {
  public String getNombre(); 
  public String getDescripcion(); 
  public double getPrecioFinal(); 
  public double getPrecioBase(); 
-
+ public void bloquearCupo(Periodo periodo);
+ public void liberarCupo(Periodo periodo);
 }

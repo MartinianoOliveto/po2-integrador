@@ -1,6 +1,8 @@
 package tp.CicloDeVidaDeLaReserva;
 import tp.NotificacionesReserva.*;
 
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
+
 public abstract class EstadoReserva {
     protected String nombre;
 
@@ -8,12 +10,12 @@ public abstract class EstadoReserva {
         this.nombre = nombre;
     }
 
-    public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
+    public void agregarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
         throw new ReservaException("Error: No se puede agregar servicios en " + this.getNombre());
     }
 
-    public void quitarServicio(Reserva reserva, Servicio servicio, int cantidad){
-        throw new ReservaException("Error: No se puede agregar servicios en " + this.getNombre());
+    public void quitarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
+        throw new ReservaException("Error: No se puede quitar servicios en " + this.getNombre());
     }
 
     public void confirmar(Reserva reserva) {
@@ -35,7 +37,7 @@ public abstract class EstadoReserva {
         throw new ReservaException("Error: No se puede finalizar el viaje en " + this.getNombre());
     }
 
-    public void registrarDisfrutado(Reserva reserva){
+    public void registrarDisfrutado(Reserva reserva, Servicio servicio, Periodo periodo){
         throw new ReservaException("Error: No se puede registrar como disfrutado en " + this.getNombre());
     }
     
