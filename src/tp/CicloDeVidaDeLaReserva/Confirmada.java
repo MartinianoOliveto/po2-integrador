@@ -2,9 +2,13 @@ package tp.CicloDeVidaDeLaReserva;
 
 public class Confirmada extends EstadoReserva {
 
+    public Confirmada(String nombre) {
+        super(nombre);
+    }
+
     @Override
     public void checkin(Reserva reserva){
-        reserva.cambiarEstado(new EnCheckin());
+        reserva.cambiarEstado(new EnCheckin("EnCheckin"));
     }
     
     // Cancelar desde confirmada deberia reembolsar como EnCheckin por que en ambos casos ya se pago por los servicios
@@ -12,7 +16,7 @@ public class Confirmada extends EstadoReserva {
     public void cancelar(Reserva reserva){
         reserva.liberarCupos();
         reserva.emitirVoucher(reserva.costoTotal(), "Se cancela la reserva confirmada");
-        reserva.cambiarEstado(new Cancelada());
+        reserva.cambiarEstado(new Cancelada("Cancelada"));
     }
 
 }

@@ -1,5 +1,7 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
+
 public abstract class EstadoReserva {
     protected String nombre;
 
@@ -34,7 +36,7 @@ public abstract class EstadoReserva {
         throw new ReservaException("Error: No se puede finalizar el viaje en " + this.getNombre());
     }
 
-    public void registrarDisfrutado(Reserva reserva){
+    public void registrarDisfrutado(Reserva reserva, Servicio servicio){
         throw new ReservaException("Error: No se puede registrar como disfrutado en " + this.getNombre());
     }
     

@@ -1,6 +1,12 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
+
 public class SolicitudPendiente extends EstadoReserva {
+
+    public SolicitudPendiente(String nombre) {
+        super(nombre);
+    }
 
     @Override
     public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
@@ -18,12 +24,12 @@ public class SolicitudPendiente extends EstadoReserva {
             throw new ReservaException("No se puede confirmar una reserva sin servicios");
         }
         reserva.bloquearCupos();
-        reserva.cambiarEstado(new Confirmada());
+        reserva.cambiarEstado(new Confirmada("Confirmada"));
     }
     
     @Override
     public void cancelar(Reserva reserva){
-        reserva.cambiarEstado(new Cancelada());
+        reserva.cambiarEstado(new Cancelada("Cancelada"));
     }
 
 }

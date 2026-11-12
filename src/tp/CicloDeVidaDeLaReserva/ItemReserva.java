@@ -1,38 +1,48 @@
 package tp.CicloDeVidaDeLaReserva;
 
-import java.math.BigDecimal;
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
 
 public class ItemReserva {
+
     private final Servicio servicio;
-    private int cantidad;
+    private final Periodo periodo;
     private boolean disfrutado;
 
-    public ItemReserva(Servicio servicio, int cantidad) {
+    public ItemReserva(Servicio servicio, Periodo periodo){
         this.servicio = servicio;
-        this.cantidad = cantidad;
+        this.periodo = periodo;
     }
 
-    public Servicio getServicio() {
+    public Servicio getServicio(){
         return servicio;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public Periodo getPeriodo() {
+        return periodo;
     }
 
     public boolean esDisfrutado() {
         return disfrutado;
     }
 
-    public double subtotal() {
-        return servicio.getPrecio() * this.getCantidad();
+    public double subtotal(){
+        return servicio.getPrecioFinal();
     }
 
-    void sumarCantidad(int adicional) {
-        this.cantidad += adicional;
+    boolean esDe(Servicio otroServicio, Periodo otroPeriodo) {
+        return servicio.equals(otroServicio) && periodo.equals(otroPeriodo);
     }
 
     void marcarDisfrutado() {
-        this.disfrutado = true;
+        disfrutado = true;
+    }
+
+    // El ítem sabe pedir su cupo: le pasa al servicio su período.
+    void bloquearCupo() {
+        servicio.bloquearCupo(periodo);
+    }
+
+    void liberarCupo() {
+        servicio.liberarCupo(periodo);
     }
 }
