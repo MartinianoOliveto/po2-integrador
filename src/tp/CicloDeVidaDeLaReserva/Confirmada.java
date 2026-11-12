@@ -1,5 +1,7 @@
 package tp.CicloDeVidaDeLaReserva;
 
+import tp.NotificacionesReserva.*;
+
 public class Confirmada extends EstadoReserva {
 
     public Confirmada(String nombre) {
@@ -18,5 +20,9 @@ public class Confirmada extends EstadoReserva {
         reserva.emitirVoucher(reserva.costoTotal(), "Se cancela la reserva confirmada");
         reserva.cambiarEstado(new Cancelada("Cancelada"));
     }
-
+    //comportamiento relacionado con el observer 
+    @Override 
+    public void notificar(DependencyTransformer dt, Reserva r){
+        dt.confirmada(r);
+    }
 }

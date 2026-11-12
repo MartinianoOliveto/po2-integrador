@@ -1,6 +1,9 @@
 package tp.CicloDeVidaDeLaReserva;
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
 
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
+import tp.NotificacionesReserva.DependencyTransformer;
+
 public class EnCurso extends EstadoReserva{
     
     public EnCurso(String nombre) {
@@ -21,5 +24,10 @@ public class EnCurso extends EstadoReserva{
     public void cancelar(Reserva reserva){
         reserva.emitirVoucher(reserva.costoServiciosNoDisfrutados(), "Se cancela reserva en curso: Servicios no disfrutados");
         reserva.cambiarEstado(new Cancelada("Cancelada"));
+    }
+    //comportamiento relacionado con el observer 
+    @Override 
+    public void notificar(DependencyTransformer dt,Reserva r){
+        dt.enCurso(r);
     }
 }

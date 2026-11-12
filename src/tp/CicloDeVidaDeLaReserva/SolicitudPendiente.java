@@ -1,6 +1,8 @@
 package tp.CicloDeVidaDeLaReserva;
 
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
+import tp.NotificacionesReserva.DependencyTransformer;
+import tp.CatalogoDeServiciosYPaquetes.*;
 
 public class SolicitudPendiente extends EstadoReserva {
 
@@ -31,5 +33,6 @@ public class SolicitudPendiente extends EstadoReserva {
     public void cancelar(Reserva reserva){
         reserva.cambiarEstado(new Cancelada("Cancelada"));
     }
+
 
 }

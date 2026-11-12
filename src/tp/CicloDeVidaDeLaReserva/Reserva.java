@@ -1,12 +1,16 @@
 package tp.CicloDeVidaDeLaReserva;
+import java.util.ArrayList;
+import java.util.List;
 
+import tp.CatalogoDeServiciosYPaquetes.*;
+import tp.NotificacionesReserva.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.*;
 
-public class Reserva {
+public class Reserva extends Sujeto{
     private EstadoReserva estado;
     private final double tasasAdministrativas;
     private final ServiciosReservados servicios = new ServiciosReservados();
@@ -15,7 +19,7 @@ public class Reserva {
 
     public Reserva(double tasasAdministrativas) {
         this.tasasAdministrativas = tasasAdministrativas;
-        this.estado = new SolicitudPendiente("SolicitudPendiente");
+        this.estado = new SolicitudPendiente("Solicitud Pendiente");
     }
 
     // Pensar que el punto de entrada al contexto es el cliente. Toda
@@ -25,18 +29,29 @@ public class Reserva {
     // Operaciones de dominio:
     public void confirmar(){
         estado.confirmar(this);
+        this.notificar(this);
+        
     }
 
     public void cancelar(){
         estado.cancelar(this);
+        this.notificar(this);
+        
     }
 
     public void checkin(){
         estado.checkin(this);
+        this.notificar(this);
+        
     }
     
     public void iniciar(){
         estado.iniciar(this);
+        this.notificar(this);
+    }
+    @Override 
+    public void delegarNotificacion(DependencyTransformer dt){
+        estado.notificar(dt,this); 
     }
 
     public void finalizar(){

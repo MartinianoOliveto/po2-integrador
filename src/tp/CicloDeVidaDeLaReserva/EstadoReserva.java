@@ -1,4 +1,5 @@
 package tp.CicloDeVidaDeLaReserva;
+import tp.NotificacionesReserva.*;
 
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
 
@@ -42,5 +43,8 @@ public abstract class EstadoReserva {
     
     public String getNombre() {
         return nombre;
+    }
+    public void notificar(DependencyTransformer dt,Reserva r){
+
     }
 }

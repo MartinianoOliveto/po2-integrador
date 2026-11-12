@@ -1,9 +1,14 @@
 package tp.NotificacionesReserva;
-
+import tp.CicloDeVidaDeLaReserva.*;
 public class Fidelizacion extends Subsistema{
+    private GeneradorCuponAPI generadorCupon; 
 
     @Override
-    public void actualizar() {
+    public void actualizar(Reserva r) {
+        generadorCupon.generarCupon(r); 
+    }
+    public Fidelizacion(GeneradorCuponAPI api){
+        generadorCupon = api; 
     }
 
 }

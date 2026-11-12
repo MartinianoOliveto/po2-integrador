@@ -1,11 +1,11 @@
 package tp.NotificacionesReserva;
+import tp.CicloDeVidaDeLaReserva.*;
 
 public class DTVoucher extends DependencyTransformer{
 
-    @Override
-    public void actualizar(Sujeto s) {
-        //Aca va la logica de si delega o no 
-        target.actualizar();
+    @Override 
+    public void finalizada(Reserva r){
+        target.actualizar(r); 
     }
     public DTVoucher(Subsistema target){
         super(target); 
