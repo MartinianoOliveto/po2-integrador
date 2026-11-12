@@ -1,7 +1,10 @@
 package tp.CatalogoDeServiciosYPaquetes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import tp.CicloDeVidaDeLaReserva.Periodo;
 
 public class Servicio implements IItemCatalogo{
  private String nombre;
@@ -10,7 +13,8 @@ public class Servicio implements IItemCatalogo{
  private String operador;
  private String categoria;
  private double precioBase;
- private double descuentoPromocional; 
+ private double descuentoPromocional;
+ private final CalendarioDeCupos cupos = new CalendarioDeCupos(); // Colaborador
  private List<AtributoDinamico> atributosDinamicos = new ArrayList<>();
 // LEAF
  public Servicio (String nombre, int id, String descripcion, String operador, String categoria, double precioBase, double descuentoPromocional) {
@@ -45,9 +49,32 @@ public class Servicio implements IItemCatalogo{
   return this.getPrecioBase() * (1 - descuentoPromocional); 
  }
 
+ @Override 
+ public void bloquearCupo(Periodo periodo){
+    cupos.bloquear(periodo);
+ }
+
+ @Override
+ public void liberarCupo(Periodo periodo) {
+        cupos.liberar(periodo);
+ }
+
  public void agregarAtributo(AtributoDinamico atributo) {
     this.atributosDinamicos.add(atributo);
 }
+
+ public void habilitarCupos(Periodo periodo, int cantidad) {
+    cupos.habilitar(periodo, cantidad);
+ }
+
+ public int cuposDisponibles(LocalDate dia) {
+    return cupos.disponibles(dia);
+ }
+
+ public boolean hayCupo(Periodo periodo) {
+    return cupos.hayCupo(periodo);
+ }
+
 
 public void validar() {
     if (this.nombre == null) {
