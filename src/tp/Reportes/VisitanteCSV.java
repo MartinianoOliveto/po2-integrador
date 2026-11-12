@@ -16,5 +16,8 @@ public class VisitanteCSV implements Visitante{
     public void visitar(ReporteProveedor r) {
         api.exportarReporteProveedor(r.exposicionPorProveedor());
     }
+    public VisitanteCSV(ExportadorCSVAPI api){
+        this.api = api; 
+    }
 
 }
