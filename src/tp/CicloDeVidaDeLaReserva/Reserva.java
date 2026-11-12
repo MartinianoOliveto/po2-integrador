@@ -5,9 +5,6 @@ import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Reserva {
     private EstadoReserva estado;
     private final double tasasAdministrativas;

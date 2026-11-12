@@ -9,11 +9,11 @@ public abstract class EstadoReserva {
         this.nombre = nombre;
     }
 
-    public void agregarServicio(Reserva reserva, Servicio servicio, int cantidad){
+    public void agregarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
         throw new ReservaException("Error: No se puede agregar servicios en " + this.getNombre());
     }
 
-    public void quitarServicio(Reserva reserva, Servicio servicio, int cantidad){
+    public void quitarServicio(Reserva reserva, Servicio servicio, Periodo periodo){
         throw new ReservaException("Error: No se puede agregar servicios en " + this.getNombre());
     }
 
@@ -36,7 +36,7 @@ public abstract class EstadoReserva {
         throw new ReservaException("Error: No se puede finalizar el viaje en " + this.getNombre());
     }
 
-    public void registrarDisfrutado(Reserva reserva, Servicio servicio){
+    public void registrarDisfrutado(Reserva reserva, Servicio servicio, Periodo periodo){
         throw new ReservaException("Error: No se puede registrar como disfrutado en " + this.getNombre());
     }
     

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import tp.CicloDeVidaDeLaReserva.CalendarioDeCupos;
 import tp.CicloDeVidaDeLaReserva.Periodo;
 
 public class Servicio implements IItemCatalogo{
@@ -62,10 +63,6 @@ public class Servicio implements IItemCatalogo{
  public void agregarAtributo(AtributoDinamico atributo) {
     this.atributosDinamicos.add(atributo);
 }
-
- public void habilitarCupos(Periodo periodo, int cantidad) {
-    cupos.habilitar(periodo, cantidad);
- }
 
  public int cuposDisponibles(LocalDate dia) {
     return cupos.disponibles(dia);

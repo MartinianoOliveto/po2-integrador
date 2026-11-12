@@ -1,6 +1,7 @@
 package tp.CicloDeVidaDeLaReserva;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class Periodo {
@@ -19,9 +20,23 @@ public class Periodo {
         return hasta;
     }
 
+    // Para servicios de un solo dia
+    public static Periodo unDia(LocalDate fecha) {
+        return new Periodo(fecha, fecha.plusDays(1));
+    }
+
     // Personalizo con mensaje de dominio para que quede mejor
     public boolean esElMismoQue(Periodo otro) {
         return desde.isEqual(otro.desde) && hasta.isEqual(otro.hasta);
+    }
+
+    public List<LocalDate> dias() {
+        return desde.datesUntil(hasta).toList();
+    }
+
+    /** ¿Ese día está dentro del período? (incluye el inicio, excluye el fin) */
+    public boolean incluye(LocalDate dia) {
+        return !dia.isBefore(desde) && dia.isBefore(hasta);
     }
 
     // Redefino el equals y el hash para que java en listas pueda comparar
