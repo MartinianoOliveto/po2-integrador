@@ -1,25 +1,23 @@
 package tp.Reportes;
 
 public class VisitanteTexto implements Visitante{
-
+    private ExportadorTextoAPI api; 
     @Override
     public void visitar(ReporteServicios r) {
-        //Le solicito los resultados al reporte 
-        //Exporto a texto (como lo modelo??)
-        return; 
+        api.exportarReporteServicios(r.serviciosMasReservados()); 
     }
 
     @Override
     public void visitar(ReporteOcupacion r) {
-         //Le solicito los resultados al reporte 
-        //Exporto a texto (como lo modelo??)
-        return;
+        api.exportarReporteOcupacion(r.serviciosPorCupo()); 
     }
 
     @Override
     public void visitar(ReporteProveedor r) {
-         //Le solicito los resultados al reporte 
-        //Exporto a texto (como lo modelo??)
-        return;
+        api.exportarReporteProveedor(r.exposicionPorProveedor());
+    }
+
+    public VisitanteTexto(ExportadorTextoAPI api){
+        this.api= api; 
     }
 }
