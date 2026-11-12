@@ -29,20 +29,20 @@ public class ItemReserva {
         return servicio.getPrecioFinal();
     }
 
-    boolean esDe(Servicio otroServicio, Periodo otroPeriodo) {
-        return servicio.equals(otroServicio) && periodo.equals(otroPeriodo);
+    public boolean esDe(Servicio otroServicio, Periodo otroPeriodo) {
+        return servicio == otroServicio && periodo.esElMismoQue(otroPeriodo);
     }
 
-    void marcarDisfrutado() {
+    public void marcarDisfrutado() {
         disfrutado = true;
     }
 
     // El ítem sabe pedir su cupo: le pasa al servicio su período.
-    void bloquearCupo() {
+    public void bloquearCupo() {
         servicio.bloquearCupo(periodo);
     }
 
-    void liberarCupo() {
+    public void liberarCupo() {
         servicio.liberarCupo(periodo);
     }
 }
