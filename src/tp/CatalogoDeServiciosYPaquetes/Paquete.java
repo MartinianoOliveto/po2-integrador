@@ -73,6 +73,16 @@ public class Paquete implements IItemCatalogo{
   }
  }
 
+ @Override
+  public boolean perteneceACategoria(Categoria categoria) {
+  return componentes.stream().anyMatch(componente -> componente.perteneceACategoria(categoria));
+ }
+
+ @Override
+  public boolean tieneDisponibilidad() { // Obviamente chequeo que no este vacia primero (shortcircuit)
+  return !componentes.isEmpty() && componentes.stream().allMatch(componente -> componente.tieneDisponibilidad());
+ }
+
 
 }
 

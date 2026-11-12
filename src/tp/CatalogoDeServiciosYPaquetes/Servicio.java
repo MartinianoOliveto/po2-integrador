@@ -12,13 +12,13 @@ public class Servicio implements IItemCatalogo{
  private int id; 
  private String descripcion; 
  private String operador;
- private String categoria;
+ private Categoria categoria;
  private double precioBase;
  private double descuentoPromocional;
- private final CalendarioDeCupos cupos = new CalendarioDeCupos(); // Colaborador
+ private final CalendarioDeCupos cupos = new CalendarioDeCupos(); // Colaborador que sugirio el profe
  private List<AtributoDinamico> atributosDinamicos = new ArrayList<>();
 // LEAF
- public Servicio (String nombre, int id, String descripcion, String operador, String categoria, double precioBase, double descuentoPromocional) {
+ public Servicio (String nombre, int id, String descripcion, String operador, Categoria categoria, double precioBase, double descuentoPromocional) {
   this.nombre = nombre; 
   this.id = id;
   this.descripcion = descripcion;
@@ -72,10 +72,24 @@ public class Servicio implements IItemCatalogo{
     return cupos.hayCupo(periodo);
  }
 
+ 
+ @Override
+ public boolean perteneceACategoria(Categoria categoria) {
+    return this.categoria == categoria;
+ }
+
+ @Override
+ public boolean tieneDisponibilidad() {
+    return cupos.tieneCupoEnAlgunaFecha();
+ }
+
 
 public void validar() {
     if (this.nombre == null) {
         throw new RuntimeException("Falta el valor del atributo obligatorio: nombre");
+    }
+    if (this.categoria == null) {
+        throw new RuntimeException("Falta el valor del atributo obligatorio: categoria");
     }
         for (AtributoDinamico atributo : this.atributosDinamicos) {
         atributo.validar();

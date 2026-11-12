@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import tp.CatalogoDeServiciosYPaquetes.Categoria;
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
 import tp.CicloDeVidaDeLaReserva.Periodo;
 import tp.CicloDeVidaDeLaReserva.Reserva;
@@ -32,8 +33,8 @@ public class testReservaConServiciosReales {
 
     @BeforeEach
     public void setUp() {
-        hotel = new Servicio("Hotel Central", 1, "Noche en el hotel", "Operador", "ALOJAMIENTO", 15000, 0);
-        excursion = new Servicio("Museo", 2, "Excursion guiada", "Operador", "EXCURSION", 4000, 0);
+        hotel = new Servicio("Noche de Hotel Central", 1, "Noche en el hotel", "Operador", Categoria.ALOJAMIENTO, 15000, 0);
+        excursion = new Servicio("Excursión Guiada Museo", 2, "Excursion guiada", "Operador", Categoria.EXCURSION, 4000, 0);
 
         reserva = new Reserva(1000);
         reserva.agregarServicio(hotel, estadia);

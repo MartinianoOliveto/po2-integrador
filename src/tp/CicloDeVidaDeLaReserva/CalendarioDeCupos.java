@@ -37,6 +37,10 @@ public class CalendarioDeCupos {
         return periodo.dias().stream().allMatch(dia -> disponibles(dia) > 0);
     }
 
+    public boolean tieneCupoEnAlgunaFecha() {
+        return capacidad > 0;
+    }
+
     public void bloquear(Periodo periodo) {
         if (!hayCupo(periodo)) {
             throw new RuntimeException("No hay cupo disponible");

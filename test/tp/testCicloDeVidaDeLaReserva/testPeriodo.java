@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,11 @@ public class testPeriodo {
 
     @Test
     public void susDiasIncluyenElInicioYExcluyenElFin() {
-        assertEquals(List.of(dia10, LocalDate.of(2026, 12, 11), LocalDate.of(2026, 12, 12)), estadia.dias());
+        List<LocalDate> esperados = new ArrayList<>();
+        esperados.add(dia10);
+        esperados.add(LocalDate.of(2026, 12, 11));
+        esperados.add(LocalDate.of(2026, 12, 12));
+        assertEquals(esperados, estadia.dias());
     }
 
     @Test

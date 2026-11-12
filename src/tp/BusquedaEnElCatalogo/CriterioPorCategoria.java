@@ -1,9 +1,10 @@
 package tp.BusquedaEnElCatalogo;
 
+import tp.CatalogoDeServiciosYPaquetes.Categoria;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 
 public class CriterioPorCategoria implements Criterio{
-    prviate final Categoria categoria;
+    private final Categoria categoria;
     
     public CriterioPorCategoria(Categoria categoria){
         this.categoria = categoria;
@@ -11,6 +12,6 @@ public class CriterioPorCategoria implements Criterio{
     
     @Override
     public boolean cumple(IItemCatalogo item){
-        item.perteneceACategoria(categoria);
+        return item.perteneceACategoria(categoria);
     }
 }

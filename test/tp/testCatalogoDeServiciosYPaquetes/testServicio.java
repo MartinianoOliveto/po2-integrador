@@ -9,6 +9,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import tp.CatalogoDeServiciosYPaquetes.AtributoDinamico;
+import tp.CatalogoDeServiciosYPaquetes.Categoria;
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
 
 public class testServicio {
@@ -17,7 +18,7 @@ public class testServicio {
   @BeforeEach 
 
   public void setUp() {
-    hotel = new Servicio("Hotel Central", 1, "Noche en el hotel central", "Trivago", "Alojamiento", 1000, 0);
+    hotel = new Servicio("Hotel Central", 1, "Noche en el hotel central", "Trivago", Categoria.ALOJAMIENTO, 1000, 0);
 }
   @Test
   public void sinDescuentoElPrecioFinalEsIgualAlBase() {
@@ -26,7 +27,7 @@ public class testServicio {
 
   @Test
   public void validarFallaSiFaltaElNombre() {
-	Servicio sinNombre = new Servicio(null, 1, "Sin nombre", "Trivago", "Alojamiento", 1000, 0);
+	Servicio sinNombre = new Servicio(null, 1, "Sin nombre", "Trivago", Categoria.ALOJAMIENTO, 1000, 0);
 
 	RuntimeException error = assertThrows(RuntimeException.class, () -> sinNombre.validar());
 

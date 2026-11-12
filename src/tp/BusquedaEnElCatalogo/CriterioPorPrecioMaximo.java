@@ -1,5 +1,7 @@
 package tp.BusquedaEnElCatalogo;
 
+import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
+
 public class CriterioPorPrecioMaximo implements Criterio{
     private final double precioMaximo;
     
@@ -9,7 +11,7 @@ public class CriterioPorPrecioMaximo implements Criterio{
     
     @Override
     public boolean cumple(IItemCatalogo item){
-        return item.getPrecioBase().compareTo(precioMaximo) <= 0;
+        return item.getPrecioFinal() <= precioMaximo;
     }
 
 }
