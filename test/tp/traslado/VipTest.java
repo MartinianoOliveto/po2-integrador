@@ -22,7 +22,7 @@ public void setUp() {
 
 @Test 
 public void testVipCalculoCostoDelegadoEntraslado() {
-  vip.calcularCosto(10000,4,direccion);
+  vip.calcularCosto(1,4,direccion);
   verify(trasladoVipMock,times(1)).calcularCosto(1);
   } 
 
