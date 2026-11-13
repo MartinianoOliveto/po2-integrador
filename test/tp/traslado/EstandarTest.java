@@ -18,20 +18,20 @@ public class EstandarTest {
     public void setUp() {
         direccion = mock(Direccion.class);
         plataformaMock = mock(PlataformaTransporte.class);
-        estandar = new Estandar(1, direccion, plataformaMock);
+        estandar = new Estandar(plataformaMock);
     }
 
     @Test
     public void testEstandarCalculaCostoDelegandoEnPlataforma() {
-        estandar.calcularCosto(); 
-        verify(plataformaMock,times(1)).estimarTraslado(1,direccion);
+        estandar.calcularCosto(10000,4,direccion); 
+        verify(plataformaMock,times(1)).estimarTraslado(4,direccion);
     }
 
     @Test
     public void testEstandarDevuelveElCostoQueEstimaLaPlataforma() {
-	when(plataformaMock.estimarTraslado(1, direccion)).thenReturn(1f);
-    float costo = estandar.calcularCosto();
+	when(plataformaMock.estimarTraslado(4, direccion)).thenReturn(1f);
+    float costo = estandar.calcularCosto(10000,4,direccion);
 	assertEquals(1, costo);
-}
+    }
 }
     

@@ -11,25 +11,26 @@ import static org.mockito.Mockito.when;
 public class VipTest {
  private TrasladoVIP trasladoVipMock;
  private Vip vip;
+ private Direccion direccion;
 
  @BeforeEach
 public void setUp() {
   trasladoVipMock = mock(TrasladoVIP.class);
-  vip = new Vip (1, trasladoVipMock); 
-}
+  direccion = mock(Direccion.class); 
+  vip = new Vip (trasladoVipMock);
+  } 
 
 @Test 
 public void testVipCalculoCostoDelegadoEntraslado() {
-  vip.calcularCosto();
+  vip.calcularCosto(10000,4,direccion);
   verify(trasladoVipMock,times(1)).calcularCosto(1);
-} 
+  } 
 
 @Test 
-
 public void testVipDevuelveCostoCalculado(){
   when(trasladoVipMock.calcularCosto(1)).thenReturn(1f);
-  float costoVip = vip.calcularCosto();
-  assertEquals(1f, costoVip);
-}
+  float costoVip = vip.calcularCosto(1,4,direccion);
+  assertEquals(1, costoVip);
+  }
 }
 
