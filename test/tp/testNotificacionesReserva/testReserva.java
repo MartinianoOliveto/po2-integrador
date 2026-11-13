@@ -2,6 +2,8 @@ package tp.testNotificacionesReserva;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
+import tp.CatalogoDeServiciosYPaquetes.Servicio;
 import tp.CicloDeVidaDeLaReserva.*;
 import tp.NotificacionesReserva.*;
 
@@ -15,17 +17,21 @@ public class testReserva {
     private DTFidelizacion dtn; 
     private DTVoucher dtg;
     private DTNotificador dtf; 
+    private Servicio s; 
+    private Periodo p; 
 
 
     @BeforeEach
     public void setUp(){
         dtn = mock(DTFidelizacion.class); 
         dtg = mock(DTVoucher.class);
-        dtf = mock(DTNotificador.class); 
+        dtf = mock(DTNotificador.class);
+        s = mock(Servicio.class); 
         r = new Reserva(10d); 
         r.agregar(dtn);
         r.agregar(dtg);
         r.agregar(dtf);
+        r.agregarServicio(s,p);
     }
     @Test 
     public void agregandoObservadorTest(){
@@ -50,14 +56,14 @@ public class testReserva {
         r.remover(dtg); 
         assertDoesNotThrow(()->r.remover(dtg)); 
     }
-   /*  @Test 
+    @Test 
    //Todos reciben la notificacion
-     public void notificarCancelacion(){
+    public void notificarCancelacion(){
         r.cancelar(); 
         verify(dtn,times(1)).actualizar(r); 
         verify(dtg,times(1)).actualizar(r);
         verify(dtf,times(1)).actualizar(r);
-    }*/
+    }
     //Voy a testear que se notifiquen las transiciones validas 
     @Test 
     public void transicionValidaSolicitudPendienteACanceladaTest(){
@@ -73,17 +79,15 @@ public class testReserva {
         verify(dtg,never()).actualizar(r);
         verify(dtf,never()).actualizar(r);
     }
-    //Este test no pasa, ya que depende de los items, revisar cuando este integrado 
-    //Pero aca voy a verificar que se hagan las transiciones validas 
-    //Deberia chequear TODAS las transiciones invalidas y testearlas, pero voy a seguir con otros modulos
     @Test 
     public void notificaEnTransicionesValidasTest(){
         r.confirmar();
         r.checkin(); 
         r.iniciar(); 
-        verify(dtn,times(3)).actualizar(r); 
-        verify(dtg,times(3)).actualizar(r); 
-        verify(dtf,times(3)).actualizar(r); 
+        r.finalizar(); 
+        verify(dtn,times(4)).actualizar(r); 
+        verify(dtg,times(4)).actualizar(r); 
+        verify(dtf,times(4)).actualizar(r); 
     }
 }
 
