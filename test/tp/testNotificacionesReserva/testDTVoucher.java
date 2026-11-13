@@ -41,7 +41,7 @@ public class testDTVoucher {
     }
     @Test
     public void canceladaNoHaceNadaTest(){
-        dtv.confirmada(r);
+        dtv.cancelada(r);
         verify(v,never()).actualizar(r); 
     }
     @Test 

@@ -56,6 +56,7 @@ public class Reserva extends Sujeto{
 
     public void finalizar(){
         estado.finalizar(this);
+        this.notificar(this);
     }
     
     // Modelo colaboradores como sugirio el profe para el tema de fechas y cupos
