@@ -2,10 +2,12 @@ package tp.testReportes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tp.BusquedaEnElCatalogo.Catalogo;
+import tp.BusquedaEnElCatalogo.ExposicionOperador;
 import tp.Reportes.*;
 
 public class ReporteProveedorTest {
@@ -14,7 +16,7 @@ public class ReporteProveedorTest {
     private VisitanteTexto vt; 
     private VisitanteCSV vc; 
     private VisitanteHTML vh;
-    private HashMap<String, Float> mockMap = new HashMap<>(); 
+    private List<ExposicionOperador> mockMap = new ArrayList<>(); 
 
     @BeforeEach
     public void setUp(){
@@ -36,7 +38,7 @@ public class ReporteProveedorTest {
     }
     @Test
     public void serviciosPorCupoTest(){
-        HashMap<String, Float>r = p.exposicionPorProveedor(); 
+        List<ExposicionOperador>r = p.exposicionPorProveedor(); 
         assertEquals(r,mockMap); 
         verify(c,times(1)).exposicionPorProveedor(); 
     }

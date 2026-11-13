@@ -4,11 +4,13 @@ import tp.CatalogoDeServiciosYPaquetes.*;
 
 import static org.mockito.Mockito.*;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import tp.BusquedaEnElCatalogo.ExposicionOperador;
 import tp.Reportes.*;
 
 public class VisitanteTextoTest {
@@ -17,8 +19,8 @@ public class VisitanteTextoTest {
     private ReporteServicios s;
     private ReporteProveedor p; 
     private ReporteOcupacion o; 
-    private HashMap<String, Float> mockMap = new HashMap<>(); 
-    private HashMap<IItemCatalogo,Integer> mockMap2 = new HashMap<>(); 
+    private List<ExposicionOperador> mockMap = new ArrayList<>(); 
+    private List<IItemCatalogo> mockMap2 = new ArrayList<>(); 
 
     @BeforeEach
     public void setUp(){

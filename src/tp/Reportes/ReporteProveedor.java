@@ -1,8 +1,9 @@
 package tp.Reportes;
 
-import java.util.HashMap;
+import java.util.List;
 
 import tp.BusquedaEnElCatalogo.Catalogo;
+import tp.BusquedaEnElCatalogo.ExposicionOperador;
 
 public class ReporteProveedor extends Reporte{
 
@@ -11,7 +12,7 @@ public class ReporteProveedor extends Reporte{
         v.visitar(this); 
     }
 
-    public HashMap<String, Float> exposicionPorProveedor(){
+    public List<ExposicionOperador> exposicionPorProveedor(){
         return catalogo.exposicionPorProveedor(); 
     }
     public ReporteProveedor(Catalogo c){

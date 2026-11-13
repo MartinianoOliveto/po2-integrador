@@ -8,9 +8,12 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import java.time.LocalDate;
+
 import tp.CatalogoDeServiciosYPaquetes.AtributoDinamico;
 import tp.CatalogoDeServiciosYPaquetes.Categoria;
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
+import tp.CicloDeVidaDeLaReserva.Periodo;
 
 public class testServicio {
   private Servicio hotel;
@@ -61,6 +64,20 @@ public void DevuelveNombre() {
 @Test
 public void DevuelveDescripcion() {
   assertEquals("Noche en el hotel central", hotel.getDescripcion());
+}
+
+@Test
+public void cuposReservadosCuentaLosCuposBloqueadosEnSuCalendario() {
+  hotel.bloquearCupo(Periodo.unDia(LocalDate.of(2026, 12, 10)));
+  hotel.bloquearCupo(Periodo.unDia(LocalDate.of(2026, 12, 11)));
+
+  assertEquals(2, hotel.cuposReservados());
+}
+
+@Test
+public void operadoresDevuelveSoloSuOperador() {
+  assertEquals(1, hotel.operadores().size());
+  assertEquals("Trivago", hotel.operadores().get(0));
 }
 
 }

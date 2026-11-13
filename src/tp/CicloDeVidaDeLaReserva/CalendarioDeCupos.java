@@ -22,6 +22,11 @@ public class CalendarioDeCupos {
         return capacidad;
     }
 
+    // Cantidad de periodos bloqueados (unidades vendidas que siguen vigentes)
+    public int reservados() {
+        return bloqueados.size();
+    }
+
     public int ocupados(LocalDate dia) {
         return bloqueados.stream()
         .filter(periodo -> periodo.incluye(dia))

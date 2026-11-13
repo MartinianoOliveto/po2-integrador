@@ -83,6 +83,18 @@ public class Servicio implements IItemCatalogo{
     return cupos.tieneCupoEnAlgunaFecha();
  }
 
+ @Override
+ public int cuposReservados() {
+    return cupos.reservados();
+ }
+
+ @Override
+ public List<String> operadores() {
+    List<String> operadores = new ArrayList<>();
+    operadores.add(operador);
+    return operadores;
+ }
+
 
 public void validar() {
     if (this.nombre == null) {

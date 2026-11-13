@@ -1,13 +1,13 @@
 package tp.Reportes;
 
-import java.util.HashMap;
 import java.util.List;
 
+import tp.BusquedaEnElCatalogo.ExposicionOperador;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 
 public interface ExportadorTextoAPI {
-    public void exportarReporteProveedor(HashMap<String,Float> m); 
+    public void exportarReporteProveedor(List<ExposicionOperador> m); 
     public void exportarReporteOcupacion(List<IItemCatalogo>l); 
-    public void exportarReporteServicios(HashMap<IItemCatalogo,Integer>n); 
+    public void exportarReporteServicios(List<IItemCatalogo> n); 
 
 }

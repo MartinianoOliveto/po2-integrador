@@ -1,6 +1,6 @@
 package tp.Reportes;
 
-import java.util.HashMap;
+import java.util.List;
 
 import tp.BusquedaEnElCatalogo.Catalogo;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
@@ -11,7 +11,7 @@ public class ReporteServicios extends Reporte{
     public void aceptar(Visitante v) {
         v.visitar(this); 
     }
-    public HashMap<IItemCatalogo, Integer> serviciosMasReservados(){
+    public List<IItemCatalogo> serviciosMasReservados(){
         return catalogo.serviciosMasReservados(); 
     }
     public ReporteServicios(Catalogo c){
