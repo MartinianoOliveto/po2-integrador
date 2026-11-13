@@ -2,12 +2,11 @@ package tp.testBusquedaEnElCatalogo;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import tp.BusquedaEnElCatalogo.CriterioPorCategoria;
 import tp.BusquedaEnElCatalogo.CriterioPorDisponibilidad;
@@ -57,7 +56,7 @@ public class testCriteriosSimples {
 
     @Test
     public void porPrecioMaximoNoCumpleSiLoSupera() {
-        when(item.getPrecioBase()).thenReturn(15000.0);
+        when(item.getPrecioFinal()).thenReturn(15000.0);
 
         assertFalse(new CriterioPorPrecioMaximo(14999.99).cumple(item));
     }
