@@ -1,23 +1,29 @@
 package tp.testCatalogoDeServiciosYPaquetes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 import tp.CatalogoDeServiciosYPaquetes.Paquete;
+import tp.CicloDeVidaDeLaReserva.Periodo;
 
 public class PaqueteTest {
  private Paquete paquete;
  private IItemCatalogo componente1;
  private IItemCatalogo componente2;
+ private final Periodo noche = Periodo.unDia(LocalDate.of(2026, 12, 10));
 
 @BeforeEach
  public void setUp() { 
@@ -102,6 +108,40 @@ public class PaqueteTest {
       esperados.add("Trivago");
       esperados.add("Turismo BA");
       assertEquals(esperados, paquete.operadores());
+    }
+
+    @Test
+    public void bloquearCupoBloqueaElCupoDeTodosSusComponentes() {
+      paquete.agregarComponente(componente1);
+      paquete.agregarComponente(componente2);
+
+      paquete.bloquearCupo(noche);
+
+      verify(componente1).bloquearCupo(noche);
+      verify(componente2).bloquearCupo(noche);
+    }
+
+    @Test
+    public void siUnComponenteNoTieneCupoSeLiberaLoQueYaSeHabiaBloqueado() {
+      doThrow(new RuntimeException("No hay cupo disponible")).when(componente2).bloquearCupo(noche);
+      paquete.agregarComponente(componente1);
+      paquete.agregarComponente(componente2);
+
+      assertThrows(RuntimeException.class, () -> paquete.bloquearCupo(noche));
+
+      verify(componente1).liberarCupo(noche);            // ya estaba bloqueado: se deshace
+      verify(componente2, never()).liberarCupo(noche);   // nunca llego a bloquearse
+    }
+
+    @Test
+    public void liberarCupoLiberaElCupoDeTodosSusComponentes() {
+      paquete.agregarComponente(componente1);
+      paquete.agregarComponente(componente2);
+
+      paquete.liberarCupo(noche);
+
+      verify(componente1).liberarCupo(noche);
+      verify(componente2).liberarCupo(noche);
     }
 
 }

@@ -2,6 +2,7 @@ package tp.testCicloDeVidaDeLaReserva;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -45,6 +46,27 @@ public class testPeriodo {
 
     @Test
     public void periodosConFechasDistintasNoSonElMismo() {
-        assertFalse(estadia.esElMismoQue(Periodo.unDia(dia10)));
+        assertFalse(estadia.esElMismoQue(Periodo.unDia(dia10)));   // mismo inicio, distinto fin
+    }
+
+    @Test
+    public void periodosQueEmpiezanDistintoNoSonElMismo() {
+        assertFalse(estadia.esElMismoQue(new Periodo(LocalDate.of(2026, 12, 11), dia13)));   // distinto inicio
+    }
+
+    @Test
+    public void unPeriodoEsIgualASiMismo() {
+        assertTrue(estadia.equals(estadia));
+    }
+
+    @Test
+    public void unPeriodoNoEsIgualANullNiAOtroTipoDeObjeto() {
+        assertFalse(estadia.equals(null));
+        assertFalse(estadia.equals(new Object()));
+    }
+
+    @Test
+    public void periodosConFechasDistintasNoSonIguales() {
+        assertNotEquals(estadia, Periodo.unDia(dia10));
     }
 }

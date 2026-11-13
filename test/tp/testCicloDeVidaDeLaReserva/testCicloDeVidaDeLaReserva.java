@@ -8,6 +8,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ import tp.CicloDeVidaDeLaReserva.Periodo;
 import tp.CicloDeVidaDeLaReserva.Reserva;
 import tp.CicloDeVidaDeLaReserva.ReservaException;
 import tp.CicloDeVidaDeLaReserva.SolicitudPendiente;
+import tp.NotificacionesReserva.DependencyTransformer;
 
 /**
  * Ciclo de vida de la reserva (patron State).
@@ -144,6 +146,39 @@ public class testCicloDeVidaDeLaReserva {
         reserva.confirmar();
 
         assertThrows(ReservaException.class, () -> reserva.registrarDisfrutado(hotel, estadia));
+    }
+
+    @Test
+    public void soloSePuedenQuitarServiciosEnPendiente() {
+        reserva.confirmar();
+
+        assertThrows(ReservaException.class, () -> reserva.quitarServicio(hotel, estadia));
+    }
+
+    @Test
+    public void noSePuedeIniciarElViajeSinHacerCheckin() {
+        reserva.confirmar();
+
+        ReservaException error = assertThrows(ReservaException.class, () -> reserva.iniciar());
+        assertEquals("Error: No se puede iniciar el viaje en Confirmada", error.getMessage());
+    }
+
+    @Test
+    public void noSePuedeFinalizarUnViajeQueNoEmpezo() {
+        reserva.confirmar();
+        reserva.checkin();
+
+        assertThrows(ReservaException.class, () -> reserva.finalizar());
+        assertInstanceOf(EnCheckin.class, reserva.getEstado());
+    }
+
+    @Test
+    public void unaReservaPendienteNoLeAvisaANingunSubsistema() {
+        DependencyTransformer dt = mock(DependencyTransformer.class);
+
+        reserva.delegarNotificacion(dt);   // SolicitudPendiente usa el notificar vacio de EstadoReserva
+
+        verifyNoInteractions(dt);
     }
 
     @Test

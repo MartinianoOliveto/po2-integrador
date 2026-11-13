@@ -13,13 +13,6 @@ public class Periodo {
         this.hasta = hasta;
     }
 
-    public LocalDate getDesde(){
-        return desde;
-    }
-    public LocalDate getHasta(){
-        return hasta;
-    }
-
     // Para servicios de un solo dia
     public static Periodo unDia(LocalDate fecha) {
         return new Periodo(fecha, fecha.plusDays(1));
