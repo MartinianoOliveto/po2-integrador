@@ -8,6 +8,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 import tp.CatalogoDeServiciosYPaquetes.Paquete;
 
@@ -75,6 +78,30 @@ public class PaqueteTest {
     @Test 
     public void DevuelveLaDescripcion() {
       assertEquals("Especial Navidad", paquete.getDescripcion());
+    }
+
+    @Test
+    public void unPaqueteNoTieneCuposReservadosPropios() {
+      paquete.agregarComponente(componente1);
+
+      assertEquals(0, paquete.cuposReservados());
+    }
+
+    @Test
+    public void operadoresJuntaLosDeTodosSusComponentes() {
+      List<String> deHotel = new ArrayList<>();
+      deHotel.add("Trivago");
+      List<String> deMuseo = new ArrayList<>();
+      deMuseo.add("Turismo BA");
+      when(componente1.operadores()).thenReturn(deHotel);
+      when(componente2.operadores()).thenReturn(deMuseo);
+      paquete.agregarComponente(componente1);
+      paquete.agregarComponente(componente2);
+
+      List<String> esperados = new ArrayList<>();
+      esperados.add("Trivago");
+      esperados.add("Turismo BA");
+      assertEquals(esperados, paquete.operadores());
     }
 
 }

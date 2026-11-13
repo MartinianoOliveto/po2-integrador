@@ -69,6 +69,15 @@ public class testCalendarioDeCupos {
     }
 
     @Test
+    public void reservadosCuentaSoloLosPeriodosQueSiguenBloqueados() {
+        calendario.bloquear(del10Al13);
+        calendario.bloquear(Periodo.unDia(dia13));
+        calendario.liberar(del10Al13);
+
+        assertEquals(1, calendario.reservados());
+    }
+
+    @Test
     public void noSePuedeLiberarUnPeriodoQueNoSeBloqueo() {
         assertThrows(RuntimeException.class, () -> calendario.liberar(del10Al13));
     }

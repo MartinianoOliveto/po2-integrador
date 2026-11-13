@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +19,7 @@ public class ReporteServiciosTest {
     private VisitanteTexto vt; 
     private VisitanteCSV vc; 
     private VisitanteHTML vh;
-    private HashMap<IItemCatalogo,Integer> mockMap = new HashMap<>();
+    private List<IItemCatalogo> mockMap = new ArrayList<>();
 
     @BeforeEach 
     public void setUp(){
@@ -41,7 +41,7 @@ public class ReporteServiciosTest {
     }
     @Test
     public void serviciosPorCupoTest(){
-        HashMap<IItemCatalogo,Integer>r = s.serviciosMasReservados(); 
+        List<IItemCatalogo>r = s.serviciosMasReservados(); 
         assertEquals(r,mockMap); 
         verify(c,times(1)).serviciosMasReservados(); 
     }

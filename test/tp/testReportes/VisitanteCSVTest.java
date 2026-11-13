@@ -2,20 +2,22 @@ package tp.testReportes;
 
 import static org.mockito.Mockito.*;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import tp.BusquedaEnElCatalogo.ExposicionOperador;
 import tp.Reportes.*;
 import tp.CatalogoDeServiciosYPaquetes.*; 
 
 public class VisitanteCSVTest {
     private ReporteServicios r; 
-    private HashMap<IItemCatalogo,Integer> mockMap = new HashMap<>();  
+    private List<IItemCatalogo> mockMap = new ArrayList<>();  
     private ReporteOcupacion o;
     private ReporteProveedor p; 
-    private HashMap<String,Float> mockMap2 = new HashMap<>(); 
+    private List<ExposicionOperador> mockMap2 = new ArrayList<>(); 
     private VisitanteCSV v; 
     private ExportadorCSVAPI api; 
 
