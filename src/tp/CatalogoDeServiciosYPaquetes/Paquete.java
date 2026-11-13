@@ -83,6 +83,20 @@ public class Paquete implements IItemCatalogo{
   return !componentes.isEmpty() && componentes.stream().allMatch(componente -> componente.tieneDisponibilidad());
  }
 
+ @Override
+  public int cuposReservados() { // El paquete no tiene cupo propio y hoy la Reserva no acepta paquetes
+  return 0;
+ }
+
+ @Override
+  public List<String> operadores() { // Un paquete depende de los operadores de todos sus componentes
+  List<String> operadores = new ArrayList<>();
+  for (IItemCatalogo componente : componentes) {
+    operadores.addAll(componente.operadores());
+  }
+  return operadores;
+ }
+
 
 }
 

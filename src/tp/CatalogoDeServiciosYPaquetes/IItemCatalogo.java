@@ -1,5 +1,7 @@
 package tp.CatalogoDeServiciosYPaquetes;
 
+import java.util.List;
+
 import tp.CicloDeVidaDeLaReserva.Periodo;
 
 public interface IItemCatalogo {
@@ -11,4 +13,6 @@ public interface IItemCatalogo {
  public void liberarCupo(Periodo periodo);
  public boolean perteneceACategoria(Categoria categoria);
  public boolean tieneDisponibilidad();
+ public int cuposReservados();
+ public List<String> operadores();
 }
