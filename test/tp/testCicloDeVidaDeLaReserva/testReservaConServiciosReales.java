@@ -15,11 +15,6 @@ import tp.CicloDeVidaDeLaReserva.Periodo;
 import tp.CicloDeVidaDeLaReserva.Reserva;
 import tp.CicloDeVidaDeLaReserva.SolicitudPendiente;
 
-/**
- * Tests de integracion: Reserva + Servicio del 2.1 + CalendarioDeCupos reales, sin mocks.
- * testCicloDeVidaDeLaReserva verifica CON QUE le habla la reserva a los servicios;
- * estos verifican que el cupo realmente cambia cuando los objetos colaboran.
- */
 public class testReservaConServiciosReales {
 
     private final LocalDate dia10 = LocalDate.of(2026, 12, 10);

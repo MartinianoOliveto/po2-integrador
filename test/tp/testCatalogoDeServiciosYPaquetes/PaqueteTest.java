@@ -129,7 +129,7 @@ public class PaqueteTest {
 
       assertThrows(RuntimeException.class, () -> paquete.bloquearCupo(noche));
 
-      verify(componente1).liberarCupo(noche);            // ya estaba bloqueado: se deshace
+      verify(componente1).liberarCupo(noche);            // si ya estaba bloqueado hago el rollback
       verify(componente2, never()).liberarCupo(noche);   // nunca llego a bloquearse
     }
 

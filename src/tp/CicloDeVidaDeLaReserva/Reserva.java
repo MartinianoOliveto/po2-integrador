@@ -4,11 +4,7 @@ import java.util.List;
 
 import tp.CatalogoDeServiciosYPaquetes.*;
 import tp.NotificacionesReserva.*;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-
-import tp.CatalogoDeServiciosYPaquetes.*;
 
 public class Reserva extends Sujeto{
     private EstadoReserva estado;

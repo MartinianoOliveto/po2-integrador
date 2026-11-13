@@ -22,7 +22,7 @@ public class FechaTest {
 
     @Test
     public void aceptaUnaFechaCualquiera() {
-        // Mock de LocalDate: aísla la prueba de un día u hora en particular
+
         LocalDate fecha = mock(LocalDate.class);
 
         assertDoesNotThrow(() -> tipoFecha.validarTipo(fecha));

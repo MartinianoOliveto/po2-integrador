@@ -19,11 +19,10 @@ import tp.BusquedaEnElCatalogo.CriterioNot;
 import tp.BusquedaEnElCatalogo.CriterioOr;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 
-/**
- * Los nodos compuestos del Composite de criterios (AND, OR) y el NOT.
- * Los hijos son criterios mockeados que responden lo que el test decide:
- * asi se prueba solo la logica de combinacion, sin depender de los criterios simples.
- */
+
+//  Los nodos compuestos del Composite de criterios (AND, OR) y el NOT.
+//  Los hijos son criterios mockeados
+//  asi se prueba solo la logica de combinacion, sin depender de los criterios simples.
 public class testCriteriosCompuestos {
 
     private IItemCatalogo item;
@@ -45,8 +44,6 @@ public class testCriteriosCompuestos {
         criterios.add(segundo);
         return criterios;
     }
-
-    // ---------------- AND ----------------
 
     @Test
     public void andCumpleSiTodosCumplen() {
@@ -70,8 +67,6 @@ public class testCriteriosCompuestos {
         verify(segundo, never()).cumple(item);
     }
 
-    // ---------------- OR ----------------
-
     @Test
     public void orCumpleSiAlgunoCumple() {
         Criterio or = new CriterioOr(criterios(criterioQueDevuelve(false), criterioQueDevuelve(true)));
@@ -94,15 +89,11 @@ public class testCriteriosCompuestos {
         verify(segundo, never()).cumple(item);
     }
 
-    // ---------------- NOT ----------------
-
     @Test
     public void notInvierteElResultado() {
         assertFalse(new CriterioNot(criterioQueDevuelve(true)).cumple(item));
         assertTrue(new CriterioNot(criterioQueDevuelve(false)).cumple(item));
     }
-
-    // ---------------- Anidados: un compuesto adentro de otro ----------------
 
     @Test
     public void losCompuestosSePuedenAnidar() {

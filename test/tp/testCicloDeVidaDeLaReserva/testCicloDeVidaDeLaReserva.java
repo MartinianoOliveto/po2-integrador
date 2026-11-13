@@ -28,12 +28,6 @@ import tp.CicloDeVidaDeLaReserva.ReservaException;
 import tp.CicloDeVidaDeLaReserva.SolicitudPendiente;
 import tp.NotificacionesReserva.DependencyTransformer;
 
-/**
- * Ciclo de vida de la reserva (patron State).
- *
- * Los servicios son mocks: asi se prueba solo la reserva (no el catalogo del 2.1)
- * y se puede verificar con que le habla la reserva a cada servicio.
- */
 public class testCicloDeVidaDeLaReserva {
 
     private static final double TOLERANCIA = 0.001;
@@ -63,8 +57,7 @@ public class testCicloDeVidaDeLaReserva {
         reserva.iniciar();
     }
 
-    // ---------------- Flujo normal ----------------
-
+    // Aca testeo el flujo normal de la reserva
     @Test
     public void unaReservaNuevaEstaPendiente() {
         assertInstanceOf(SolicitudPendiente.class, new Reserva(0).getEstado());
@@ -99,8 +92,6 @@ public class testCicloDeVidaDeLaReserva {
         assertThrows(ReservaException.class, () -> reserva.agregarServicio(hotel, estadia));
     }
 
-    // ---------------- Cupos ----------------
-
     @Test
     public void confirmarBloqueaElCupoDeCadaServicioEnSuPeriodo() {
         reserva.confirmar();
@@ -125,8 +116,6 @@ public class testCicloDeVidaDeLaReserva {
 
         assertThrows(ReservaException.class, () -> vacia.confirmar());
     }
-
-    // ---------------- Operaciones invalidas ----------------
 
     @Test
     public void soloSePuedenAgregarServiciosEnPendiente() {

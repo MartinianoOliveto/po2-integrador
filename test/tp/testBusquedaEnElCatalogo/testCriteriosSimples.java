@@ -15,10 +15,6 @@ import tp.BusquedaEnElCatalogo.CriterioPorPrecioMaximo;
 import tp.CatalogoDeServiciosYPaquetes.Categoria;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 
-/**
- * Las hojas del Composite de criterios.
- * El item es un mock: al criterio no le importa si es un servicio o un paquete, solo le pregunta.
- */
 public class testCriteriosSimples {
 
     private IItemCatalogo item;
@@ -27,8 +23,6 @@ public class testCriteriosSimples {
     public void setUp() {
         item = mock(IItemCatalogo.class);
     }
-
-    // ---------------- Por nombre ----------------
 
     @Test
     public void porNombreNoDistingueMayusculas() {
@@ -45,8 +39,6 @@ public class testCriteriosSimples {
         assertFalse(new CriterioPorNombre("hotel").cumple(item));
     }
 
-    // ---------------- Por precio maximo ----------------
-
     @Test
     public void porPrecioMaximoIncluyeElLimite() {
         when(item.getPrecioBase()).thenReturn(15000.0);
@@ -61,8 +53,7 @@ public class testCriteriosSimples {
         assertFalse(new CriterioPorPrecioMaximo(14999.99).cumple(item));
     }
 
-    // ---------------- Por categoria y disponibilidad: le delegan la pregunta al item ----------------
-
+    // Delego en el item
     @Test
     public void porCategoriaLeDelegaLaPreguntaAlItem() {
         when(item.perteneceACategoria(Categoria.ALOJAMIENTO)).thenReturn(true);

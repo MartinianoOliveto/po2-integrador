@@ -1,8 +1,6 @@
 package tp.CicloDeVidaDeLaReserva;
 
 import tp.CatalogoDeServiciosYPaquetes.Servicio;
-import tp.NotificacionesReserva.DependencyTransformer;
-import tp.CatalogoDeServiciosYPaquetes.*;
 
 public class SolicitudPendiente extends EstadoReserva {
 

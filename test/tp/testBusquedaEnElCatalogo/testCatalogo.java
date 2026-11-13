@@ -16,7 +16,7 @@ import tp.BusquedaEnElCatalogo.Criterio;
 import tp.BusquedaEnElCatalogo.ExposicionOperador;
 import tp.CatalogoDeServiciosYPaquetes.IItemCatalogo;
 
-/** La busqueda solo filtra: la decision de que item cumple la toma el criterio. */
+// La busqueda solo filtra, la decision de que item cumple la toma el criterio.
 public class testCatalogo {
 
     private IItemCatalogo hotel;
@@ -41,7 +41,7 @@ public class testCatalogo {
         Criterio criterio = mock(Criterio.class);
         when(criterio.cumple(hotel)).thenReturn(true);
         when(criterio.cumple(pack)).thenReturn(true);
-        // museo no se configura: el mock devuelve false por defecto
+        // museo no se configura, el mock devuelve false por defecto
 
         List<IItemCatalogo> esperados = new ArrayList<>();
         esperados.add(hotel);
