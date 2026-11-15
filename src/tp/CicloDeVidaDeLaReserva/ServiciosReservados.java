@@ -50,7 +50,7 @@ public class ServiciosReservados {
         }
     }
 
-    void liberarCupos() {
+    public void liberarCupos() {
         items.forEach(item -> item.liberarCupo());
     }
 
