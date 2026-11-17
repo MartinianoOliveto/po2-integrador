@@ -12,8 +12,7 @@ public abstract class MetodoDePago {
     protected abstract void validarDatos();
     protected abstract void reservarFondos();
     protected abstract void ejecutarTransaccion();
-    protected abstract void notificarResultado(); 
+    protected void notificarResultado(){
 
-    
-
+    }
 }
